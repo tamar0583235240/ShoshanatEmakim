@@ -5,7 +5,7 @@ const corsOptions = require("./src/config/corsOptions");
 const connectDB = require("./src/config/dbConn.js");
 const mongoose = require('mongoose');
 
-const productRoutes = require('./src/routes/product.js');
+const productRoutes = require('./src/routes/productRoute.js');
 
 const PORT = process.env.PORT || 5001;
 const app = express();
@@ -26,3 +26,5 @@ mongoose.connection.once('open', () => {
 mongoose.connection.on('error', err => {
     console.log(err)
 })
+
+app.use('/product', productRoutes);
