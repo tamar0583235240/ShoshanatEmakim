@@ -9,7 +9,7 @@ const productSchema = new Schema({
   number: { type: Number, required: true, unique: true },
   name: { type: String, required: true },  
   description: { type: String, default: '' },
-  image: { type: String,required:true },
+  imageURL : { type: String,required:true },
   creationDate: { type: Date, default: Date.now },
 });
 

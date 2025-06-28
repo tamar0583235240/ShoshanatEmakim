@@ -6,6 +6,8 @@ const connectDB = require("./src/config/dbConn.js");
 const mongoose = require('mongoose');
 
 const productRoutes = require('./src/routes/productRoute.js');
+const contactRoutes = require('./src/routes/contact.js');
+
 
 const PORT = process.env.PORT || 5001;
 const app = express();
@@ -28,3 +30,4 @@ mongoose.connection.on('error', err => {
 })
 
 app.use('/product', productRoutes);
+app.use('/contact', contactRoutes);
