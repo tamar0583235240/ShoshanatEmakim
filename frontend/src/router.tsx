@@ -1,10 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
-import AppLayout from "./AppLayout";
-import HomePage from "../pages/HomePage";
-import AboutPage from "../pages/AboutPage";
-import ContactPage from "../pages/ContactPage";
-import CategoryPage from "../pages/CategoryPage";
-import NotFound from "../pages/NotFound";
+import AppLayout from "./layouts/AppLayout";
+import HomePage from "./pages/HomePage";
+import AboutPage from "./pages/AboutPage";
+import ContactPage from "./pages/ContactPage";
+import CategoryPage from "./pages/CategoryPage";
+import NotFound from "./pages/NotFound";
 
 const router = createBrowserRouter([
   {
