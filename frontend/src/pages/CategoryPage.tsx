@@ -1,6 +1,4 @@
-interface CategoryPageProps {
-  title: string;
-}
+import type { CategoryPageProps } from "../features/products/types/CategoryPageProps";
 
 const CategoryPage: React.FC<CategoryPageProps> = ({ title }) => {
   return (

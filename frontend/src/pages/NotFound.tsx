@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const NotFound = () => {
+const NotFound: React.FC = () => {
   return (
     <div style={{ padding: "2rem", textAlign: "center" }}>
       <h1>404 - הדף לא נמצא</h1>

@@ -1,4 +1,4 @@
-const AboutPage = () => {
+const AboutPage: React.FC = () => {
   return (
     <div>
       <h1>אודות</h1>
