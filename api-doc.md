@@ -5,52 +5,48 @@ Response 200 / 201 / 400 / 404 / 500:
   "error": "" /500
 }
 
+# getAllProducts
 Path:
 GET
-- product/getallproducts
+- product/
 
+# get product by Id
 Path:
 GET
-- product/getproduct/:id (mongo-_id)
+- product/:id (mongo-_id)
 
+# get product by category
 Path:
 GET
-- product/getproductbynumber/:number (int)
+- product/getByCategory/:category (string)
 
-
-Path:
-GET
-- product/getproductsbycategory/:category (string)
-
+# update product
 Path:
 PUT
-- product/updateproduct
+- product/update/:id
 request
 {
-  body:{ category, name, description }
+  body:{ category, name, description ... }
 }
 fetch('/api/recipes', {
   method: 'POST',
   body: formData
 });
 
+# add new product
 Path:
 POST
-- product/addproduct
+- product/add
 request
 {
   body: formData{ image , category, name, description }
 }
-const formData = new FormData(e.target);
-fetch('/api/recipes', {
-  method: 'POST',
-  body: formData
-});
 ![example sending](api-docs-image.png)
 
+# send email
 Path:
 POST
-- contact/sendemail
+- contact/sendEmail
 request
 {
   body:

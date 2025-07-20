@@ -2,6 +2,6 @@ const express = require('express');
 const {sendMail } = require('../utils/sendEmail');
 const router = express.Router();
 
-router.post('/sendemail', sendMail);
+router.post('/sendEmail', sendMail);
 
 module.exports = router;

@@ -4,10 +4,10 @@ const {uploadImageMiddleware } = require('../utils/uploadSingleImage');
 const {getNextProductNum} = require('../middleware/runningProductNum');
 const router = express.Router();
 
-router.get('/getproduct/:id', getProduct);
-router.post('/addproduct', getNextProductNum,uploadImageMiddleware,createProduct );
-router.get('/getproductsbycategory/:category', getProductsByCategory);
-router.put('/updateproduct/:id',updateProduct)
-router.get('/getallproducts',getAllProducts)
+router.get('/:id', getProduct);
+router.post('/add', getNextProductNum,uploadImageMiddleware,createProduct );
+router.get('/getByCategory/:category', getProductsByCategory);
+router.put('/update/:id',updateProduct)
+router.get('/',getAllProducts)
 
 module.exports = router;
