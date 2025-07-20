@@ -5,6 +5,9 @@ Response 200 / 201 / 400 / 404 / 500:
   "error": "" /500
 }
 
+Path:
+GET
+- product/getallproducts
 
 Path:
 GET
@@ -20,11 +23,23 @@ GET
 - product/getproductsbycategory/:category (string)
 
 Path:
+PUT
+- product/updateproduct
+request
+{
+  body:{ category, name, description }
+}
+fetch('/api/recipes', {
+  method: 'POST',
+  body: formData
+});
+
+Path:
 POST
 - product/addproduct
 request
 {
-  body:{ image , category, name, description }
+  body: formData{ image , category, name, description }
 }
 const formData = new FormData(e.target);
 fetch('/api/recipes', {

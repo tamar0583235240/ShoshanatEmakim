@@ -52,4 +52,34 @@ const getProductsByCategory = async(req, res)=>{
   }
 };
 
-module.exports = { getProduct , createProduct, getProductsByCategory };
+const getAllProducts = async (req, res) => {
+  try {
+    const products = await Product.find();
+    if (!products || products.length === 0) {
+      return res.status(404).json({ message: `No products found` });
+    }
+    return res.status(200).json({ data: products });
+  } catch (err) {
+    console.error(err.message);
+    return res.status(500).json({ message: "Internal server error", error: err.message });
+  }
+};
+
+const updateProduct = async (req, res) => {
+  const id = req.params.id;
+  const updatedData = req.body;
+  try {
+    const product = await Product.findByIdAndUpdate(id, updatedData, { new: true });
+    if (!product) {
+      return res.status(404).json({ message: `Product ${id} not found` });
+    }
+    else
+      return res.status(200).json({ message: "product updated successfully", data: product });
+  } catch (err) {
+    console.error(err.message);
+    return res.status(500).json({ message: "Internal server error", error: err.message });
+  }
+
+}
+
+module.exports = { getProduct, createProduct, getProductsByCategory, getAllProducts, updateProduct };
