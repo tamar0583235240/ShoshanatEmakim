@@ -1,82 +1,240 @@
-import { NavLink } from "react-router-dom";
+
+import { useState } from "react"
+import "../style/NavBar.css"
+import logo from "../assets/logo.png"
+import { Link } from "react-router-dom"
 
 const NavBar = () => {
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
+
+  const handleMouseEnter = (menu: string) => {
+    setActiveDropdown(menu)
+  }
+
+  const handleMouseLeave = () => {
+    setActiveDropdown(null)
+  }
+
   return (
-    <nav>
-      <ul>
-        <li><NavLink to="/">דף הבית</NavLink></li>
-        <li><NavLink to="/about">אודות</NavLink></li>
-        <li><NavLink to="/contact">צור קשר</NavLink></li>
+    <nav className="navbar" dir="rtl">
+      <div className="navbar-container">
+        <div className="logo-container">
+          <Link to="/" className="navbar-link">
+            <img className="logo-image" src={logo} alt="Logo" />
+          </Link>
+        </div>
 
-        <li>
-          אירוסין
-          <ul>
-            <li><NavLink to="/engagement/live">זרים חיים</NavLink></li>
-            <li><NavLink to="/engagement/mixed">זרים משולבים</NavLink></li>
+        <div className="navbar-menu-container">
+          <ul className="navbar-menu">
+            <li
+              className="navbar-item dropdown"
+              onMouseEnter={() => handleMouseEnter("engagement")}
+              onMouseLeave={handleMouseLeave}
+            >
+              <Link to="/engagement" className="navbar-link">
+                זרי אירוסין
+              </Link>
+              {activeDropdown === "engagement" && (
+                <ul className="dropdown-menu">
+                  <li>
+                    <Link to="/engagement/live" className="dropdown-link">
+                      זרים חיים
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/engagement/mixed" className="dropdown-link">
+                      זרים משולבים
+                    </Link>
+                  </li>
+                </ul>
+              )}
+            </li>
+
+            <li
+              className="navbar-item dropdown"
+              onMouseEnter={() => handleMouseEnter("bride")}
+              onMouseLeave={handleMouseLeave}
+            >
+              <Link to="/bride" className="navbar-link">
+                זרי כלה
+              </Link>
+              {activeDropdown === "bride" && (
+                <ul className="dropdown-menu">
+                  <li>
+                    <Link to="/bride/hand" className="dropdown-link">
+                      זרי כלה ליד
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/bride/hoop" className="dropdown-link">
+                      זרי חישוק
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/bride/orchid" className="dropdown-link">
+                      זרי סחלב
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/bride/jewel" className="dropdown-link">
+                      זרי תכשיט
+                    </Link>
+                  </li>
+                </ul>
+              )}
+            </li>
+
+            <li
+              className="navbar-item dropdown"
+              onMouseEnter={() => handleMouseEnter("flowers")}
+              onMouseLeave={handleMouseLeave}
+            >
+              <Link to="/flowers" className="navbar-link">
+                סידורי פרחים
+              </Link>
+              {activeDropdown === "flowers" && (
+                <ul className="dropdown-menu">
+                  <li>
+                    <Link to="/flowers/bouquets" className="dropdown-link">
+                      זרי פרחים
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/flowers/designs" className="dropdown-link">
+                      עיצובי פרחים
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/flowers/sweets" className="dropdown-link">
+                      עיצובים מתוקים
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/flowers/pralines" className="dropdown-link">
+                      פרלינים
+                    </Link>
+                  </li>
+                </ul>
+              )}
+            </li>
+
+            <li
+              className="navbar-item dropdown"
+              onMouseEnter={() => handleMouseEnter("gifts")}
+              onMouseLeave={handleMouseLeave}
+            >
+              <Link to="/gifts" className="navbar-link">
+                עיצובי מתנות
+              </Link>
+              {activeDropdown === "gifts" && (
+                <ul className="dropdown-menu">
+                  <li>
+                    <Link to="/gifts/designs" className="dropdown-link">
+                      עיצובי מתנות
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/gifts/groom" className="dropdown-link">
+                      עיצובים לחתן
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/gifts/bride" className="dropdown-link">
+                      עיצובים לכלה
+                    </Link>
+                  </li>
+                </ul>
+              )}
+            </li>
+
+            <li
+              className="navbar-item dropdown"
+              onMouseEnter={() => handleMouseEnter("holidays")}
+              onMouseLeave={handleMouseLeave}
+            >
+              <Link to="/holidays" className="navbar-link">
+                חגים
+              </Link>
+              {activeDropdown === "holidays" && (
+                <ul className="dropdown-menu">
+                  <li>
+                    <Link to="/holidays/rosh-hashana" className="dropdown-link">
+                      ראש השנה
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/holidays/hanukkah" className="dropdown-link">
+                      חנוכה
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/holidays/tu-bav" className="dropdown-link">
+                      ט"ו באב
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/holidays/purim" className="dropdown-link">
+                      פורים
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/holidays/shavuot" className="dropdown-link">
+                      שבועות
+                    </Link>
+                  </li>
+                </ul>
+              )}
+            </li>
+
+            <li
+              className="navbar-item dropdown"
+              onMouseEnter={() => handleMouseEnter("events")}
+              onMouseLeave={handleMouseLeave}
+            >
+              <Link to="/events" className="navbar-link">
+                אירועים
+              </Link>
+              {activeDropdown === "events" && (
+                <ul className="dropdown-menu">
+                  <li>
+                    <Link to="/events/bar-mitzvah" className="dropdown-link">
+                      בר מצווה
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/events/bars" className="dropdown-link">
+                      עיצוב בארים
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/events/centerpieces" className="dropdown-link">
+                      מרכזי שולחן
+                    </Link>
+                  </li>
+                </ul>
+              )}
+            </li>
+
+            <div className="navbar-about-contact-container">
+              <li className="navbar-item">
+                <Link to="/about" className="navbar-link">
+                  אודות
+                </Link>
+              </li>
+
+              <li className="navbar-item">
+                <Link to="/contact" className="navbar-link">
+                  צור קשר
+                </Link>
+              </li>
+            </div>
           </ul>
-        </li>
-
-        <li>
-          כלה
-          <ul>
-            <li><NavLink to="/bride/hand">זרי כלה ליד</NavLink></li>
-            <li><NavLink to="/bride/hoop">זרי חישוק</NavLink></li>
-            <li><NavLink to="/bride/orchid">זרי סחלב</NavLink></li>
-            <li><NavLink to="/bride/jewel">זרי תכשיט</NavLink></li>
-          </ul>
-        </li>
-
-        <li>
-          פרחים
-          <ul>
-            <li><NavLink to="/flowers/bouquets">זרי פרחים</NavLink></li>
-            <li><NavLink to="/flowers/designs">עיצובי פרחים</NavLink></li>
-            <li><NavLink to="/flowers/sweets">עיצובים מתוקים</NavLink></li>
-            <li><NavLink to="/flowers/pralines">פרלינים</NavLink></li>
-          </ul>
-        </li>
-
-        <li>
-          מתנות
-          <ul>
-            <li><NavLink to="/gifts/designs">עיצובי מתנות</NavLink></li>
-            <li><NavLink to="/gifts/groom">עיצובים לחתן</NavLink></li>
-            <li><NavLink to="/gifts/bride">עיצובים לכלה</NavLink></li>
-          </ul>
-        </li>
-
-        <li>
-          מלאכותיים
-          <ul>
-            <li><NavLink to="/artificial/arrangements">סידורי פרחים מלאכותיים</NavLink></li>
-            <li><NavLink to="/artificial/decor">כלי נוי</NavLink></li>
-          </ul>
-        </li>
-
-        <li><NavLink to="/plants">עציצים</NavLink></li>
-
-        <li>
-          חגים
-          <ul>
-            <li><NavLink to="/holidays/rosh-hashana">ראש השנה</NavLink></li>
-            <li><NavLink to="/holidays/hanukkah">חנוכה</NavLink></li>
-            <li><NavLink to="/holidays/tu-bav">ט"ו באב</NavLink></li>
-            <li><NavLink to="/holidays/purim">פורים</NavLink></li>
-            <li><NavLink to="/holidays/shavuot">שבועות</NavLink></li>
-          </ul>
-        </li>
-
-        <li>
-          אירועים
-          <ul>
-            <li><NavLink to="/events/bar-mitzvah">בר מצווה</NavLink></li>
-            <li><NavLink to="/events/bars">עיצוב בארים</NavLink></li>
-            <li><NavLink to="/events/centerpieces">מרכזי שולחן</NavLink></li>
-          </ul>
-        </li>
-      </ul>
+        </div>
+      </div>
     </nav>
-  );
-};
 
-export default NavBar;
+  )
+}
+
+export default NavBar
+

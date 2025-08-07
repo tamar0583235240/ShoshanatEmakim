@@ -1,0 +1,120 @@
+.navbar {
+    width: 100%;
+    height: 11vh;
+    background: var(--black, #1E1E1C);
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    top: 0;
+    box-shadow: 0.5px 0.5px 0.5px 0.5px rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar-container {
+    display: flex;
+    width: 88vw;
+    height: 6vh;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.logo-image {
+    width: 6vw;
+}
+
+.navbar-menu-container {
+    width: 82vw;
+    height: 100%;
+}
+
+.navbar-menu {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-about-contact-container{
+    width: 15vw;
+    height: 100%;
+    margin-right: 10vw;
+      display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-item {
+    position: relative;
+}
+
+.navbar-link {
+    display: block;
+    padding: 12px 16px;
+    color: #333;
+    text-decoration: none;
+    font-size: 1.05rem;
+    border-radius: 4px;
+    color: var(--main, #BC6C62);
+    text-align: right;
+    font-family: 'Assistant';
+    src: url('../assets/fonts/Assistant-Regular.ttf') format('truetype');
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    transition: background 0.2s, color 0.2s;
+}
+
+.navbar-link:hover,
+.navbar-link:focus {
+   font-weight: bold; 
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    min-width: 160px;
+    background: #fff;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.10);
+    border-radius: 0 0 8px 8px;
+    padding: 8px 0;
+    margin: 0;
+    list-style: none;
+    z-index: 1001;
+}
+
+.dropdown-link {
+    display: block;
+    padding: 10px 18px;
+    color: #333;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.dropdown-link:hover,
+.dropdown-link:focus {
+    background: #f5f1ed;
+    color: #C6A383;
+}
+
+/* רספונסיביות בסיסית */
+/* @media (max-width: 900px) {
+    .navbar-container {
+        flex-direction: column;
+        height: auto;
+        padding: 0 8px;
+    }
+
+    .navbar-menu {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+} */

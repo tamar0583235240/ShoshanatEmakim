@@ -1,3 +1,4 @@
 export interface CategoryPageProps {
-  title: string;
+    [key: string]: string | undefined;
+    category?: string;
 }
