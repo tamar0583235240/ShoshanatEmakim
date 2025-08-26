@@ -1,0 +1,39 @@
+.contact-section {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px;
+  background-color: #fff;
+}
+
+.contact-form {
+  flex: 1;
+  margin-right: 30px;
+}
+
+.contact-form h2 {
+  margin-bottom: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.contact-form button {
+  background-color: #a45a53; /* צבע כפתור מהתמונה */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.contact-info {
+  flex: 1;
+  background-color: #1c1c1c;
+  color: #fff;
+  padding: 20px;
+}
