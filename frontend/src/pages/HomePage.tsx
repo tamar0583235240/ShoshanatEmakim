@@ -1,7 +1,25 @@
+import { useEffect } from "react";
 import videoHomePage from "../assets/video-homePage.mp4";
 import "../style/HomePage.css"
+import { useLocation } from "react-router-dom";
+import AboutPage from "./AboutPage";
+import ContactPage from "../Components/ContactPage";
 
 const HomePage: React.FC = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.scrollTo) {
+      const section = document.getElementById(location.state.scrollTo);
+      if (section) {
+        setTimeout(() => {
+          section.scrollIntoView({ behavior: "smooth" });
+          window.history.replaceState({}, document.title);
+        }, 100);
+      }
+    }
+  }, [location]);
+
   return (
     <div>
       <div className="hero-section">
@@ -18,10 +36,11 @@ const HomePage: React.FC = () => {
           </div> */}
         </div>
       </div>
-      <div className="main-content">
+      <div id="about">
+      <AboutPage />
       </div>
-      <div>
-        
+      <div id="contact">
+        <ContactPage />
       </div>
     </div>
   );
