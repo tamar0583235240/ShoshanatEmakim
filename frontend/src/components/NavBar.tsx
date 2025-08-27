@@ -217,13 +217,21 @@ const NavBar = () => {
 
             <div className="navbar-about-contact-container">
               <li className="navbar-item">
-                <Link to="/about" className="navbar-link">
+                <Link
+                  to="/"
+                  state={{ scrollTo: "about" }}
+                  className="navbar-link"
+                >
                   אודות
                 </Link>
               </li>
 
               <li className="navbar-item">
-                <Link to="/contact" className="navbar-link">
+                <Link
+                  to="/"
+                  state={{ scrollTo: "contact" }}
+                  className="navbar-link"
+                >
                   צור קשר
                 </Link>
               </li>

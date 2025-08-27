@@ -1,9 +1,14 @@
+import { useEffect } from "react";
 import videoHomePage from "../assets/video-homePage.mp4";
 import BouquetCard from "../components/BouquetCard";
 import "../style/HomePage.css"
+import { useLocation } from "react-router-dom";
+import AboutPage from "./AboutPage";
+import ContactPage from "../components/ContactPage";
 
 const HomePage: React.FC = () => {
-    const engagementBouquets = [
+
+  const engagementBouquets = [
     {
       id: 1,
       image: "frontend/src/assets/mok-img.jpg",
@@ -38,13 +43,27 @@ const HomePage: React.FC = () => {
       title: "זר שושנים לבנות, לילות סגולות"
     }
   ];
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.scrollTo) {
+      const section = document.getElementById(location.state.scrollTo);
+      if (section) {
+        setTimeout(() => {
+          section.scrollIntoView({ behavior: "smooth" });
+          window.history.replaceState({}, document.title);
+        }, 100);
+      }
+    }
+  }, [location]);
+
   return (
     <div>
       <section className="hero-section">
         <div className="video-container">
           <video autoPlay muted loop playsInline>
             <source src={videoHomePage} type="video/mp4" />
-              הדפדפן שלך לא תומך בווידאו.
+            הדפדפן שלך לא תומך בווידאו.
           </video>
 
           <div>
@@ -54,52 +73,55 @@ const HomePage: React.FC = () => {
           </div>
         </div>
       </section>
-       <div className="bg-white p-6" dir="rtl">
-      <div className="border-t-4 border-blue-500 mb-1"></div>
-      
-      <div className="mb-8">
-        <div className="flex justify-between items-center mb-4">
-          <h3 className="text-base text-gray-800">זרי אירוסין שעשויים לעניין אותך</h3>
-          <button 
-            className="text-sm text-gray-700 border border-gray-300 px-4 py-2 bg-white hover:bg-gray-50 transition-colors"
-          >
-            כל הזרים &lt;&lt;
-          </button>
-        </div>
-        
-        <div className="grid grid-cols-3 gap-4 mb-6">
-          {engagementBouquets.slice(0, 3).map((bouquet) => (
-            <BouquetCard key={bouquet.id} bouquet={bouquet} />
-          ))}
-        </div>
-      </div>
+      <div className="bg-white p-6" dir="rtl">
+        <div className="border-t-4 border-blue-500 mb-1"></div>
 
-      {/* Popular Bridal Bouquets Section */}
-      <div className="mb-6">
-        <div className="flex justify-between items-center mb-1">
-          <span className="text-xs text-gray-600">זרי הכלה הפופולריים שלנו</span>
+        <div className="mb-8">
+          <div className="flex justify-between items-center mb-4">
+            <h3 className="text-base text-gray-800">זרי אירוסין שעשויים לעניין אותך</h3>
+            <button
+              className="text-sm text-gray-700 border border-gray-300 px-4 py-2 bg-white hover:bg-gray-50 transition-colors"
+            >
+              כל הזרים &lt;&lt;
+            </button>
+          </div>
+
+          <div className="grid grid-cols-3 gap-4 mb-6">
+            {engagementBouquets.slice(0, 3).map((bouquet) => (
+              <BouquetCard key={bouquet.id} bouquet={bouquet} />
+            ))}
+          </div>
         </div>
-        
-        <div className="flex justify-between items-center mb-4">
-          <h3 className="text-base text-gray-800">זרי הכלה הפופולריים שלנו</h3>
-          <button 
-            className="text-sm text-gray-700 border border-gray-300 px-4 py-2 bg-white hover:bg-gray-50 transition-colors"
-          >
-            כל הזרים &lt;&lt;
-          </button>
-        </div>
-        
-        <div className="grid grid-cols-3 gap-4">
-          {bridalBouquets.slice(0, 3).map((bouquet) => (
-            <BouquetCard key={bouquet.id} bouquet={bouquet} />
-          ))}
+
+        {/* Popular Bridal Bouquets Section */}
+        <div className="mb-6">
+          <div className="flex justify-between items-center mb-1">
+            <span className="text-xs text-gray-600">זרי הכלה הפופולריים שלנו</span>
+          </div>
+
+          <div className="flex justify-between items-center mb-4">
+            <h3 className="text-base text-gray-800">זרי הכלה הפופולריים שלנו</h3>
+            <button
+              className="text-sm text-gray-700 border border-gray-300 px-4 py-2 bg-white hover:bg-gray-50 transition-colors"
+            >
+              כל הזרים &lt;&lt;
+            </button>
+          </div>
+
+          <div className="grid grid-cols-3 gap-4">
+            {bridalBouquets.slice(0, 3).map((bouquet) => (
+              <BouquetCard key={bouquet.id} bouquet={bouquet} />
+            ))}
+          </div>
         </div>
       </div>
-    </div>
       <div className="main-content">
+        <div id="about">
+          <AboutPage />
+        </div>
       </div>
-      <div>
-        
+      <div id="contact">
+        <ContactPage />
       </div>
     </div>
   );
