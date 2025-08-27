@@ -5,13 +5,6 @@
     font-family: 'Assistant', sans-serif;
 }
 
-body,
-html {
-    /* height: 100%;
-    width: 100%; */
-    /* overflow: hidden; */
-}
-
 .hero-section {
     position: relative;
     height: 100vh;
@@ -37,47 +30,82 @@ video {
     z-index: -1;
 }
 
-
-.overlay {
-    position: relative;
-    width: 320vw;
-    height: 30vh;
-    text-align: center;
-    color: #222;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.8);
-}
-
 .overlay-title {
-    font-size: 4rem;
-  color: #b5625e;
-  font-weight: bold;
-    color: var(--main, #BC6C62);
-    text-align: right;
-    font-family: Assistant;
-    font-size: clamp(2rem, 5vw, 5.625rem);
-    font-style: normal;
-    font-weight: 700;
-    line-height: 1.19;
-
+    position: absolute;
+    top: 35%;
+    right: 10%;
+    font-size: 6vw;
+    font-weight: bold;
+    color: #BC6C62;
+    margin: 0;
 }
 
-.overlay h2 {
-    font-size: 2rem;
-    margin: 20px 0;
-    color: #222;
+.overlay-subtitle {
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    font-size: 4.5vw;
+    font-weight: 530;
+    color: black;
+    -webkit-text-stroke: 0.2px rgb(255, 255, 255);
+    margin: 0;
 }
 
 .cta-button {
-    background-color: #b5625e;
-    color: white;
-    padding: 12px 24px;
+    position: absolute;
+    top: 65%;
+    right: 10%;
+    background-color: #BC6C62;
+    color: black;
+    padding: 16px 28px;
+    font-size: 1.7vw;
+    font-weight: 550;
     text-decoration: none;
-    font-size: 1rem;
-    border-radius: 4px;
-    transition: background-color 0.3s;
+    transition: background 0.3s;
 }
 
 .cta-button:hover {
-    background-color: #944c47;
+    background-color: #b55b52;
+}
+
+@media (max-width: 768px) {
+    .overlay-title {
+        font-size: 32px;
+        top: 30%;
+        right: 5%;
+    }
+
+    .overlay-subtitle {
+        font-size: 20px;
+        top: 40%;
+        right: 5%;
+    }
+
+    .cta-button {
+        font-size: 16px;
+        padding: 10px 20px;
+        top: 50%;
+        right: 5%;
+    }
+}
+
+@media (max-width: 480px) {
+    .overlay-title {
+        font-size: 24px;
+        top: 25%;
+        right: 5%;
+    }
+
+    .overlay-subtitle {
+        font-size: 16px;
+        top: 35%;
+        right: 5%;
+    }
+
+    .cta-button {
+        font-size: 14px;
+        padding: 8px 16px;
+        top: 45%;
+        right: 5%;
+    }
 }
