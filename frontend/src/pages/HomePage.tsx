@@ -5,13 +5,15 @@ import "../style/HomePage.css"
 import { useLocation } from "react-router-dom";
 import AboutPage from "./AboutPage";
 import ContactPage from "../components/ContactPage";
+import mockImg from "../assets/mok-img.jpg"
+import BouquetSection from "../components/BouquetSection";
 
 const HomePage: React.FC = () => {
 
   const engagementBouquets = [
     {
       id: 1,
-      image: "frontend/src/assets/mok-img.jpg",
+      image: mockImg,
       title: "זר שושנים לבנות, לילות סגולות"
     },
     {
@@ -73,48 +75,27 @@ const HomePage: React.FC = () => {
           </div>
         </div>
       </section>
-      <div className="bg-white p-6" dir="rtl">
-        <div className="border-t-4 border-blue-500 mb-1"></div>
+      <BouquetSection
+        title="זרי הכלה הפופולריים שלנו"
+        bouquets={[
+          { id: "1", name: "זר שושנים לבנות, ליליות סגולות", image: mockImg },
+          { id: "2", name: "זר צבעוני חגיגי", image: mockImg },
+          { id: "3", name: "זר ורדים אדומים", image: mockImg },
+          { id: "4", name: "זר אביבי רומנטי", image: mockImg },
+        ]}
+        route="/all-bouquets"
+      />
+      <BouquetSection
+        title="זרי אירוסין שאולי תאהבו"
+        bouquets={[
+          { id: "1", name: "זר שושנים לבנות, ליליות סגולות", image: mockImg },
+          { id: "2", name: "זר צבעוני חגיגי", image: mockImg },
+          { id: "3", name: "זר ורדים אדומים", image: mockImg },
+          { id: "4", name: "זר אביבי רומנטי", image: mockImg },
+        ]}
+        route="/all-bouquets"
+      />
 
-        <div className="mb-8">
-          <div className="flex justify-between items-center mb-4">
-            <h3 className="text-base text-gray-800">זרי אירוסין שעשויים לעניין אותך</h3>
-            <button
-              className="text-sm text-gray-700 border border-gray-300 px-4 py-2 bg-white hover:bg-gray-50 transition-colors"
-            >
-              כל הזרים &lt;&lt;
-            </button>
-          </div>
-
-          <div className="grid grid-cols-3 gap-4 mb-6">
-            {engagementBouquets.slice(0, 3).map((bouquet) => (
-              <BouquetCard key={bouquet.id} bouquet={bouquet} />
-            ))}
-          </div>
-        </div>
-
-        {/* Popular Bridal Bouquets Section */}
-        <div className="mb-6">
-          <div className="flex justify-between items-center mb-1">
-            <span className="text-xs text-gray-600">זרי הכלה הפופולריים שלנו</span>
-          </div>
-
-          <div className="flex justify-between items-center mb-4">
-            <h3 className="text-base text-gray-800">זרי הכלה הפופולריים שלנו</h3>
-            <button
-              className="text-sm text-gray-700 border border-gray-300 px-4 py-2 bg-white hover:bg-gray-50 transition-colors"
-            >
-              כל הזרים &lt;&lt;
-            </button>
-          </div>
-
-          <div className="grid grid-cols-3 gap-4">
-            {bridalBouquets.slice(0, 3).map((bouquet) => (
-              <BouquetCard key={bouquet.id} bouquet={bouquet} />
-            ))}
-          </div>
-        </div>
-      </div>
       <div className="main-content">
         <div id="about">
           <AboutPage />
