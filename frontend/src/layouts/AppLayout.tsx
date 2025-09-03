@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
 
 const AppLayout = () => {
   return (
@@ -13,7 +14,7 @@ const AppLayout = () => {
       </main>
 
       <footer style={{ padding: "1rem", textAlign: "center" }}>
-        <p>© כל הזכויות שמורות - חנות פרחים</p>
+        <Footer />
       </footer>
     </div>
   );
