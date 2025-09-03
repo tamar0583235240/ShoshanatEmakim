@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import AboutPage from "./AboutPage";
 import ContactPage from "../components/ContactPage";
 import mockImg from "../assets/mok-img.jpg";
 import BouquetSection from "../components/BouquetSection";
@@ -23,7 +22,7 @@ const HomePage: React.FC = () => {
   }, [location]);
 
   return (
-    <div>
+    <div  id="home">
       <HeroSection />
 
       <BouquetSection
