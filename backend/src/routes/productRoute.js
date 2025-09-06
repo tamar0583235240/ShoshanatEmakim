@@ -1,13 +1,15 @@
 const express = require('express');
-const { getProduct, createProduct,getProductsByCategory, updateProduct, getAllProducts } = require('../controllers/productController');
-const {uploadImageMiddleware } = require('../utils/uploadSingleImage');
-const {getNextProductNum} = require('../middleware/runningProductNum');
+const { getProduct, createProduct,getProductsByCategory, updateProduct, getAllProducts, deleteProduct } = require('../controllers/productController');
 const router = express.Router();
+const {getNextProductNum} = require('../middleware/runningProductNum');
+const multer = require("multer");
+const upload = multer({ storage: multer.memoryStorage() });
 
+router.post("/add", upload.single("image"), getNextProductNum, async (req, res) => {upload.single("image"), createProduct(req, res)});
+router.put('/update/:id',updateProduct);
 router.get('/:id', getProduct);
-router.post('/add', getNextProductNum,uploadImageMiddleware,createProduct );
 router.get('/getByCategory/:category', getProductsByCategory);
-router.put('/update/:id',updateProduct)
-router.get('/',getAllProducts)
+router.get('/',getAllProducts);
+router.delete('/:id',deleteProduct);
 
 module.exports = router;
