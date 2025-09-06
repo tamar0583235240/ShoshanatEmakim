@@ -1,18 +1,19 @@
 const Product = require('../models/productModel.js');
-
+const { uploadImage} = require('../utils/cloudinaryService.js');
 
 const createProduct = async (req, res) => {
   const {  category, name, description } = req.body;
-  number = req.number; 
+  const number = req.number; 
   try {
-    const imageURL = `shared/images/${number}.jpg`; // relative from the basic folder
+    const result = await uploadImage(req.file.buffer);
 
     const newProduct = new Product({
       category,
       number,
       name,
       description,
-      imageURL
+      imageURL: result.secure_url,
+      imageId: result.public_id
     });
 
     await newProduct.save();
