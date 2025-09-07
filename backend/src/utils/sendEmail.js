@@ -42,7 +42,7 @@ const sendMail = async (req, res) => {
         </div>`,
     });
 
-    console.log("Both emails sent");
+    console.log("Both emails sent customer ",fromEmail);
     res.status(200).json({ message: "Emails sent successfully" });
 
   } catch (err) {
