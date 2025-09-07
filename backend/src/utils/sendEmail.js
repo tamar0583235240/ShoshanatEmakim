@@ -33,7 +33,7 @@ const sendMail = async (req, res) => {
       html: `<p>תודה על פנייתך, ${formName}. אנו ניצור איתך קשר בהקדם.</p>`,
     });
 
-    console.log("Both emails sent");
+    console.log("Both emails sent customer ",fromEmail);
     res.status(200).json({ message: "Emails sent successfully" });
 
   } catch (err) {
