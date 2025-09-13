@@ -6,6 +6,7 @@ import NotFound from "./pages/NotFound";
 import AdminPage from "./pages/AdminPage";
 import CategoryPage from "./pages/CategoryPage";
 import SubCategoryPage from "./pages/SubCategoryPage";
+import ProductForm from "./pages/AddProduct";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,7 @@ const router = createBrowserRouter([
       { index: true, element: <HomePage /> },
       { path: 'about', element: <AboutPage /> },
       { path: 'admin', element: <AdminPage /> },
+      { path: 'add', element: <ProductForm /> },
       {
         path: ':category',
         children: [
@@ -25,7 +27,7 @@ const router = createBrowserRouter([
           {
             path: ':subCategory',
             element: <SubCategoryPage />,
-          },
+          }
         ],
       },
     ],
