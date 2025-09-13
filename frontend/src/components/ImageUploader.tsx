@@ -80,7 +80,7 @@ const ImageUploader = forwardRef(({ name, onChange }: any, ref) => {
                         image={imageSrc}
                         crop={crop}
                         zoom={zoom}
-                        aspect={4 / 3}
+                        aspect={3/4}
                         onCropChange={setCrop}
                         onZoomChange={setZoom}
                         onCropComplete={onCropComplete}
