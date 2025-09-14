@@ -14,9 +14,14 @@ const ImageUploader = forwardRef(({ name, onChange }: any, ref) => {
 
     const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files?.length) {
+            const file = e.target.files[0];
+
             const reader = new FileReader();
             reader.onload = () => setImageSrc(reader.result as string);
-            reader.readAsDataURL(e.target.files[0]);
+            reader.readAsDataURL(file);
+
+            // כאן מעדכנים גם את השם מיד
+            onChange({ target: { name, files: [file] } });
         }
     };
 
@@ -80,7 +85,7 @@ const ImageUploader = forwardRef(({ name, onChange }: any, ref) => {
                         image={imageSrc}
                         crop={crop}
                         zoom={zoom}
-                        aspect={3/4}
+                        aspect={4 / 3}
                         onCropChange={setCrop}
                         onZoomChange={setZoom}
                         onCropComplete={onCropComplete}

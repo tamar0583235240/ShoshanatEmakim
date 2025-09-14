@@ -11,11 +11,17 @@ export default function ProductForm() {
         description: "",
         image: null,
     });
+    const uploaderRef = useRef<any>(null);
 
     const handleChange = (e: any) => {
         const { name, value, files } = e.target;
-        if (name === "image") {
-            setFormData({ ...formData, image: files[0] });
+        if (files?.length) {
+            const file = files[0];
+            setFormData({
+                ...formData,
+                image: file,
+                name: file.name.split(".")[0],
+            });
         } else {
             setFormData({ ...formData, [name]: value });
         }
@@ -23,24 +29,29 @@ export default function ProductForm() {
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
-        await uploaderRef.current.getCroppedImage();
+
+        const croppedFile = await uploaderRef.current.getCroppedImage();
 
         const data = new FormData();
         data.append("category", formData.category);
         data.append("name", formData.name);
         data.append("description", formData.description);
-        data.append("image", formData.image);
+        if (croppedFile) data.append("image", croppedFile);
 
         try {
             const res = await postData(data,"/product/add");
             const result = await res.json();
             console.log("Success:", result);
+            setFormData({
+                category: "",
+                name: "",
+                description: "",
+                image: null,
+            });
         } catch (error) {
             console.error("Error:", error);
         }
     };
-
-    const uploaderRef = useRef<any>(null);
 
     return (
         <form className="product-form" onSubmit={handleSubmit}>
@@ -54,7 +65,11 @@ export default function ProductForm() {
                 required
             >
                 <option value="">בחרי קטגוריה</option>
-                {ENUM_SUB_CATEGORIES.map((subCat) => (<option value={subCat}>{subCat}</option>))}
+                {ENUM_SUB_CATEGORIES.map((subCat) => (
+                    <option key={subCat} value={subCat}>
+                        {subCat}
+                    </option>
+                ))}
             </select>
 
             <label>שם מוצר</label>
