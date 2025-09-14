@@ -13,6 +13,14 @@ const PORT = process.env.PORT || 5001;
 const app = express();
 connectDB();
 
+const cloudinary = require('cloudinary').v2;
+
+cloudinary.config({
+  secure: true
+});
+
+console.log(cloudinary.config());
+
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.static("public"));

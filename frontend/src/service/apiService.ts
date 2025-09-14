@@ -15,11 +15,10 @@ export const postData = async (data: any, path = "/data") => {
 
 export const getData = async (path = "/data") => {
   try {
-    const response = await axios.get(`${API_URL}${path}`);
-    return response.data;
+    const response: any = await axios.get(`${API_URL}${path}`);
+        return response;
   } catch (error) {
     console.error("Error fetching data:", error);
-    throw error;
   }
 };
 

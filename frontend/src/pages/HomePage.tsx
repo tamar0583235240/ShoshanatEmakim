@@ -24,7 +24,7 @@ const HomePage: React.FC = () => {
   }, [location]);
 
   return (
-    <div>
+    <div  id="home">
       <HeroSection />
 
       <BouquetSection

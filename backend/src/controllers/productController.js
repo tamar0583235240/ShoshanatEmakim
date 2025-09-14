@@ -1,18 +1,19 @@
 const Product = require('../models/productModel.js');
-
+const { uploadImage, deleteImage} = require('../utils/cloudinaryService.js');
 
 const createProduct = async (req, res) => {
   const {  category, name, description } = req.body;
-  number = req.number; 
+  const number = req.number; 
   try {
-    const imageURL = `shared/images/${number}.jpg`; // relative from the basic folder
+    const result = await uploadImage(req.file.buffer);
 
     const newProduct = new Product({
       category,
       number,
       name,
       description,
-      imageURL
+      imageURL: result.secure_url,
+      imageId: result.public_id
     });
 
     await newProduct.save();
@@ -82,4 +83,23 @@ const updateProduct = async (req, res) => {
 
 }
 
-module.exports = { getProduct, createProduct, getProductsByCategory, getAllProducts, updateProduct };
+const deleteProduct = async (req, res) => {
+  const id = req.params.id;
+  try {
+    const product = await Product.findByIdAndDelete(id);
+    if (!product) {
+      return res.status(404).json({ message: `Product ${id} not found` });
+    }
+    if (deleteImage(product.imageId)) {
+      console.log(`Image for product ${id} deleted successfully`);
+      return res.status(200).json({ message: "Product and image deleted successfully" });
+    }
+    else
+      return res.status(200).json({ message: "Product deleted successfully and image not found" });
+  } catch (err) {
+    console.error(err.message);
+    return res.status(500).json({ message: "Internal server error", error: err.message });
+  }
+}
+
+module.exports = { getProduct, createProduct, getProductsByCategory, getAllProducts, updateProduct, deleteProduct };

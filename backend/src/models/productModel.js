@@ -10,6 +10,7 @@ const productSchema = new Schema({
   name: { type: String, required: true },  
   description: { type: String, default: '' },
   imageURL : { type: String,required:true },
+  imageId: { type: String, required: true },
   creationDate: { type: Date, default: Date.now },
 });
 
