@@ -14,7 +14,7 @@
 .contact-form {
   flex: 1;
   padding: 5vw;
-    direction: rtl;
+  direction: rtl;
 
 }
 
@@ -45,6 +45,15 @@
   padding: 12px;
   border: 1px solid #333;
   font-size: 14px;
+  outline: none;
+}
+
+.contact-info.centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  text-align: center;
 }
 
 .contact-form textarea {
@@ -89,4 +98,10 @@
   font-size: 12px;
   color: red;
   margin: 0 0 5px 0;
+}
+
+.inputs-row-three {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 10px;
 }
