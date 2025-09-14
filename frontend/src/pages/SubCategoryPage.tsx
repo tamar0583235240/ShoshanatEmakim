@@ -3,40 +3,29 @@ import type { SubCategoryPageProps } from "../features/products/types/SubCategor
 import { getData } from "../service/apiService";
 import { useEffect, useState } from "react";
 import BouquetCard from "../components/BouquetCard";
+import "../style/SubCategoryPage.css";
 
 const SubCategoryPage: React.FC<SubCategoryPageProps> = () => {
-
   const { subCategory } = useParams<{ subCategory: string }>();
   const [products, setProducts] = useState<any[]>([]);
   const [message, setMessage] = useState<string | null>(null);
 
   const getProducts = async () => {
-    console.log("in product page ", subCategory)
-    const response = await getData(`/product/getByCategory/${subCategory}`)
-    console.log("response: ", response)
-    if (response.status === 200)
-      setProducts(response.data.data)
-    else
-      setMessage("שגיאה בטעינת המוצרים, נסו שוב.")
-    console.log("products: ", products)
-  }
-  useEffect(() => {
-    getProducts()
-  }, [])
+    const response = await getData(`/product/getByCategory/${subCategory}`);
+    if (response.status === 200) setProducts(response.data.data);
+    else setMessage("שגיאה בטעינת המוצרים, נסו שוב.");
+  };
 
-  console.log(`Rendering CategoryPage for category: ${subCategory}`);
+  useEffect(() => {
+    getProducts();
+  }, [subCategory]);
+
   return (
-<div style={{ padding: "20px" }}>
-      <h1 style={{ marginBottom: "20px" }}>קטגוריה: {subCategory}</h1>
-      {message && <div>{message}</div>}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
-          gap: "20px",
-          justifyItems: "center",
-        }}
-      >
+    <div className="subcategory-page">
+      <h1 className="subcategory-title">{subCategory}</h1>
+      {message && <div className="error-message">{message}</div>}
+
+      <div className="bouquet-grid">
         {products.map((item) => (
           <BouquetCard
             key={item._id}

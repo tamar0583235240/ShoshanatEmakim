@@ -14,12 +14,9 @@ const ImageUploader = forwardRef(({ name, onChange }: any, ref) => {
 
     const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files?.length) {
-            const file = e.target.files[0];
-
             const reader = new FileReader();
             reader.onload = () => setImageSrc(reader.result as string);
-            reader.readAsDataURL(file);
-            onChange({ target: { name, files: [file] } });
+            reader.readAsDataURL(e.target.files[0]);
         }
     };
 
@@ -35,8 +32,8 @@ const ImageUploader = forwardRef(({ name, onChange }: any, ref) => {
         await new Promise((resolve) => (image.onload = resolve));
 
         const canvas = document.createElement("canvas");
-        canvas.width = croppedAreaPixels.width;
-        canvas.height = croppedAreaPixels.height;
+        canvas.width = 300;
+        canvas.height = 300;
         const ctx = canvas.getContext("2d");
         if (!ctx) return;
 
@@ -78,31 +75,27 @@ const ImageUploader = forwardRef(({ name, onChange }: any, ref) => {
         <div>
             <input type="file" accept="image/*" onChange={handleFile} />
             {imageSrc && (
-                <>
-                    <div style={{ position: "relative", width: 400, height: 400 }}>
-                        <Cropper
-                            image={imageSrc}
-                            crop={crop}
-                            zoom={zoom}
-                            aspect={1}
-                            onCropChange={setCrop}
-                            onZoomChange={setZoom}
-                            onCropComplete={onCropComplete}
-                            restrictPosition={false}
-                            objectFit="contain"
-                            minZoom={0.1}
-                            maxZoom={3}
-                        />
-                    </div>
-                    <input
-                        type="range"
-                        min={0.1}
-                        max={3}
-                        step={0.1}
-                        value={zoom}
-                        onChange={(e) => setZoom(Number(e.target.value))}
+                <div style={{ position: "relative", width: 400, height: 400 }}>
+                    <Cropper
+                        image={imageSrc}
+                        crop={crop}
+                        zoom={zoom}
+                        aspect={3/4}
+                        onCropChange={setCrop}
+                        onZoomChange={setZoom}
+                        onCropComplete={onCropComplete}
                     />
-                </>
+                </div>
+            )}
+            {imageSrc && (
+                <input
+                    type="range"
+                    min={1}
+                    max={3}
+                    step={0.1}
+                    value={zoom}
+                    onChange={(e) => setZoom(Number(e.target.value))}
+                />
             )}
         </div>
     );
