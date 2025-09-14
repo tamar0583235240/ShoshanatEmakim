@@ -3,11 +3,11 @@ import { useState } from "react";
 import { postData } from "../service/apiService";
 
 const ContactPage: React.FC = () => {
-  const [formData, setFormData] = useState({ 
-    name: "", 
-    phone: "", 
-    email: "", 
-    message: "" 
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: ""
   });
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
@@ -57,50 +57,100 @@ const ContactPage: React.FC = () => {
 
   return (
     <section className="contact-section">
-      <div className="contact-form">
-        <h2>ליצירת קשר</h2>
+      <div className="form-container">
+        <div className="contact-form">
+          <h2>ליצירת קשר</h2>
+          <span className="subtitle">מוזמנים לכתוב לנו</span>
 
-        <input
-          name="name"
-          placeholder="שם"
-          value={formData.name}
-          onChange={handleChange}
-        />
+          <div className="inputs-row">
+            <input
+              name="name"
+              placeholder="שם"
+              value={formData.name}
+              onChange={handleChange}
+            />
+            <input
+              name="phone"
+              placeholder="טלפון"
+              value={formData.phone}
+              onChange={handleChange}
+            />
+          </div>
+          {errors.phone && <p className="error">{errors.phone}</p>}
 
-        <input
-          name="phone"
-          placeholder="טלפון"
-          value={formData.phone}
-          onChange={handleChange}
-        />
-        {errors.phone && <p className="error">{errors.phone}</p>}
+          <input
+            name="email"
+            placeholder="מייל"
+            value={formData.email}
+            onChange={handleChange}
+          />
+          {errors.email && <p className="error">{errors.email}</p>}
 
-        <input
-          name="email"
-          placeholder="מייל"
-          value={formData.email}
-          onChange={handleChange}
-        />
-        {errors.email && <p className="error">{errors.email}</p>}
+          <textarea
+            name="message"
+            placeholder="הודעה"
+            value={formData.message}
+            onChange={handleChange}
+          ></textarea>
 
-        <textarea
-          name="message"
-          placeholder="הודעה"
-          value={formData.message}
-          onChange={handleChange}
-        ></textarea>
+          <button onClick={handleSubmit}>שליחה &lt;&lt;</button>
+        </div>
 
-        <button onClick={handleSubmit}>שלח</button>
-      </div>
-
-      <div className="contact-info">
-        <h2>להזמנות</h2>
-        <p>רח' הראשי 15, מודיעין עילית</p>
-        <p>טלפון: 08-9744553</p>
-        <p>נייד: 053-3191206</p>
-        <p>אימייל: 9744553@gmail.com</p>
+        <div className="contact-info">
+          <h2>להזמנות</h2>
+          <p><i className="fas fa-map-marker-alt"></i> רגב״ל 15 מודיעין עילית</p>
+          <p><i className="fas fa-phone"></i> 08 - 9744553</p>
+          <p><i className="fas fa-mobile-alt"></i> 053.319.1206</p>
+          <p><i className="fas fa-envelope"></i> 9744553@gmail.com</p>
+        </div>
       </div>
     </section>
+
+    // <section className="contact-section">
+    //   <div className="contact-form">
+    //     <h2>ליצירת קשר</h2>
+
+    //     <input
+    //       name="name"
+    //       placeholder="שם"
+    //       value={formData.name}
+    //       onChange={handleChange}
+    //     />
+
+    //     <input
+    //       name="phone"
+    //       placeholder="טלפון"
+    //       value={formData.phone}
+    //       onChange={handleChange}
+    //     />
+    //     {errors.phone && <p className="error">{errors.phone}</p>}
+
+    //     <input
+    //       name="email"
+    //       placeholder="מייל"
+    //       value={formData.email}
+    //       onChange={handleChange}
+    //     />
+    //     {errors.email && <p className="error">{errors.email}</p>}
+
+    //     <textarea
+    //       name="message"
+    //       placeholder="הודעה"
+    //       value={formData.message}
+    //       onChange={handleChange}
+    //     ></textarea>
+
+    //     <button onClick={handleSubmit}>שלח</button>
+    //   </div>
+
+    //   <div className="contact-info">
+    //     <h2>להזמנות</h2>
+    //     <p>רח' הראשי 15, מודיעין עילית</p>
+    //     <p>טלפון: 08-9744553</p>
+    //     <p>נייד: 053-3191206</p>
+    //     <p>אימייל: 9744553@gmail.com</p>
+    //   </div>
+    // </section>
   );
 };
 

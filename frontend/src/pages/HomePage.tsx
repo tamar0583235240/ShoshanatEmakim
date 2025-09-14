@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import AboutPage from "./AboutPage";
+import "../style/HomePage.css"
 import ContactPage from "../components/ContactPage";
 import mockImg from "../assets/mok-img.jpg";
 import BouquetSection from "../components/BouquetSection";
