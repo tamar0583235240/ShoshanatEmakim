@@ -1,10 +1,10 @@
 import { useRef, useState } from "react";
-import "../style/AddProduct.css";
-import {ENUM_SUB_CATEGORIES} from "../types/Enums"
-import { postData } from "../service/apiService";
-import ImageUploader from "../components/ImageUploader";
+import "../../style/AddProduct.css";
+import { ENUM_SUB_CATEGORIES } from "../../types/Enums"
+import { postData } from "../../service/apiService";
+import ImageUploader from "../../components/ImageUploader";
 
-export default function ProductForm() {
+export default function ProductForm({ setIsModalOpen }: any) {
     const [formData, setFormData] = useState<any>({
         category: "",
         name: "",
@@ -37,17 +37,10 @@ export default function ProductForm() {
         data.append("name", formData.name);
         data.append("description", formData.description);
         if (croppedFile) data.append("image", croppedFile);
-
         try {
-            const res = await postData(data,"/product/add");
-            const result = await res.json();
-            console.log("Success:", result);
-            setFormData({
-                category: "",
-                name: "",
-                description: "",
-                image: null,
-            });
+            const res = await postData(data, "/product/add");
+            console.log("Success:", res);
+            setIsModalOpen(false);
         } catch (error) {
             console.error("Error:", error);
         }
@@ -55,6 +48,12 @@ export default function ProductForm() {
 
     return (
         <form className="product-form" onSubmit={handleSubmit}>
+            <button
+              onClick={() => setIsModalOpen(false)}
+              style={{ position: "absolute", top: 10, right: 10 }}
+            >
+              ❌
+            </button>
             <h2>הוספת מוצר חדש</h2>
 
             <label>קטגוריה</label>
