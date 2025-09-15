@@ -25,7 +25,7 @@ const SubCategoryPage: React.FC<SubCategoryPageProps> = () => {
       <h1 className="subcategory-title">{subCategory}</h1>
       {message && <div className="error-message">{message}</div>}
 
-      <div className="bouquet-grid">
+      <div className="bouquet-grid-container">
         {products.map((item) => (
           <BouquetCard
             key={item._id}
