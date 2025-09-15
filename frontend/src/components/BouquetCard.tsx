@@ -5,15 +5,17 @@ type BouquetProps = {
   id: string;
   name: string;
   image: string;
+  category?: string;
 };
 
-const BouquetCard: React.FC<BouquetProps> = ({ id, name, image }) => {
+const BouquetCard: React.FC<BouquetProps> = ({ id, name, image, category }) => {
   return (
     <div className="bouquet-card">
       <div className="bouquet-image">
-        <img src={image} alt={name} />
+        <img id={id} src={image} alt={name} />
       </div>
       <div className="bouquet-name">{name}</div>
+      {category && <div className="bouquet-category">{category}</div>}
     </div>
   );
 };
