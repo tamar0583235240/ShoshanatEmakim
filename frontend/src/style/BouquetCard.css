@@ -25,3 +25,9 @@
     background: black;
     color: white;
 }
+
+.bouquet-category {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 4px;
+}
