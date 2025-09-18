@@ -1,12 +1,12 @@
-
 import { useState } from "react"
 import "../style/NavBar.css"
 import logo from "../assets/logo.png"
 import { Link } from "react-router-dom"
-import {type SubCategory, SUB_CATEGORIES_BY_CATEGORY  } from "../features/products/types/Enums"
+import { type SubCategory, SUB_CATEGORIES_BY_CATEGORY } from "../features/products/types/Enums"
 
 const NavBar = ({ isAdmin = false }: { isAdmin?: boolean }) => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const categories: SubCategory[] = Object.keys(SUB_CATEGORIES_BY_CATEGORY) as SubCategory[];
 
@@ -27,7 +27,17 @@ const NavBar = ({ isAdmin = false }: { isAdmin?: boolean }) => {
           </Link>
         </div>
 
-        <div className="navbar-menu-container">
+        {/* כפתור המבורגר במסכים קטנים */}
+        <button
+          className={`hamburger ${isMenuOpen ? "active" : ""}`}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div className={`navbar-menu-container ${isMenuOpen ? "open" : ""}`}>
           <ul className="navbar-menu">
           {categories.map((categoryName: SubCategory) => (
             <li
@@ -82,9 +92,7 @@ const NavBar = ({ isAdmin = false }: { isAdmin?: boolean }) => {
         </div>
       </div>
     </nav>
-
   )
 }
 
 export default NavBar
-

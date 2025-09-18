@@ -21,7 +21,6 @@
     align-items: center;
 }
 
-
 .logo-image {
     width: 6vw;
 }
@@ -40,11 +39,11 @@
     padding: 0;
 }
 
-.navbar-about-contact-container{
+.navbar-about-contact-container {
     width: 15vw;
     height: 100%;
     margin-right: 10vw;
-      display: flex;
+    display: flex;
     justify-content: space-between;
     align-items: center;
 }
@@ -73,7 +72,7 @@
 
 .navbar-link:hover,
 .navbar-link:focus {
-   font-weight: bold; 
+    font-weight: bold;
 }
 
 .dropdown-menu {
@@ -105,8 +104,7 @@
     color: #C6A383;
 }
 
-/* רספונסיביות בסיסית */
-/* @media (max-width: 900px) {
+@media (max-width: 900px) {
     .navbar-container {
         flex-direction: column;
         height: auto;
@@ -117,4 +115,95 @@
         flex-wrap: wrap;
         gap: 8px;
     }
-} */
+}
+
+/* כפתור המבורגר */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1002; /* מעל התפריט */
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: var(--main, #BC6C62);
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* אנימציית X כשהכפתור אקטיבי */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* במסכים קטנים */
+@media (max-width: 900px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .navbar-menu-container {
+    position: absolute;
+    top: 11vh;
+    right: 0;
+    width: 100%;
+    background: var(--black, #1E1E1C);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .navbar-menu-container.open {
+    max-height: 70vh;
+  }
+
+  .navbar-menu {
+    flex-direction: column;
+    gap: 0;
+    padding: 10px 0;
+    text-align: center;
+  }
+
+  .navbar-link {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+  }
+
+  .navbar-about-contact-container {
+    flex-direction: column;
+    gap: 8px;
+    margin: 12px 0 0 0;
+  }
+
+  .dropdown-menu {
+    position: relative;
+    box-shadow: none;
+    background: #2c2c2c;
+    border-radius: 0;
+  }
+
+  .dropdown-link {
+    color: #fff;
+  }
+
+  .dropdown-link:hover {
+    background: #444;
+    color: #C6A383;
+  }
+}
