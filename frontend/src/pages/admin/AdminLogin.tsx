@@ -9,7 +9,7 @@ const AdminLogin = () => {
     e.preventDefault();
     // בדיקה מול השרת או סיסמה זמנית...
     login();
-    navigate("/admin/some-category/some-subCategory");
+    navigate("/admin/products");
   };
 
   return (
