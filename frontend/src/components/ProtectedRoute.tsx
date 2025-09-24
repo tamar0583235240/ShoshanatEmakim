@@ -1,5 +1,6 @@
 import { Navigate } from "react-router-dom";
 import type { JSX } from "react/jsx-dev-runtime";
+import { useAdmin } from "../context/AdminContext";
 
 type Props = {
   children: JSX.Element;
