@@ -4,7 +4,6 @@ import HomePage from "./pages/HomePage";
 import NotFound from "./pages/NotFound";
 import CategoryPage from "./pages/CategoryPage";
 import SubCategoryPage from "./pages/SubCategoryPage";
-import ProductsPage from "./pages/admin/ProductsPage";
 import AdminLogin from "./pages/admin/AdminLogin";
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -37,7 +36,7 @@ const router = createBrowserRouter([
       {
         path: "products/:category?/:subCategory?", element: (
           <ProtectedRoute>
-            <ProductsPage />
+            <SubCategoryPage />
           </ProtectedRoute>
         )
       },
