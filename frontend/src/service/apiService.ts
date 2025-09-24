@@ -40,8 +40,8 @@ const handleError = (error: any) => {
   console.error("API Error:", error);
   // אם יש תגובת שרת
   if (error.response && error.response.data) {
-    return Promise.reject(error.response.data); // מחזיר את כל האובייקט { data?, message?, error? }
+    return error.response.data;
   } else {
-    return Promise.reject({ message: "שגיאה לא צפויה" });
+    return { message: "שגיאה לא צפויה" };
   }
 };
