@@ -5,7 +5,7 @@ const {getNextProductNum} = require('../middleware/runningProductNum');
 const multer = require("multer");
 const upload = multer({ storage: multer.memoryStorage() });
 
-router.post("/add", upload.single("image"), getNextProductNum, async (req, res) => {upload.single("image"), createProduct(req, res)});
+router.post("/add", upload.single("image"), async (req, res) => {upload.single("image"), createProduct(req, res)});
 router.put('/update/:id',updateProduct);
 router.get('/:id', getProduct);
 router.get('/getByCategory/:category', getProductsByCategory);
