@@ -1,36 +1,45 @@
 const nodemailer = require('nodemailer');
 const transport = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: 'mindy05832@gmail.com',
-        pass: process.env.EMAIL_PASSWORD
-    }
+  service: 'gmail',
+  auth: {
+    user: 'mindy05832@gmail.com',
+    pass: process.env.EMAIL_PASSWORD
+  }
 })
 
-const FROM_EMAIL = 'mindy05832@gmail.com'
+const FROM_EMAIL = process.env.FROM_EMAIL
+const TO_EMAIL = process.env.TO_EMAIL
 
 const sendMail = async (req, res) => {
-  const { formName, message, fromEmail } = req.body;
-  if (!fromEmail) {
+  const { name, message, email, phone } = req.body;
+  if (!email) {
     return res.status(400).json({ message: "Email not provided" });
   }
 
   try {
     await transport.sendMail({
       from: FROM_EMAIL,
-      to: 'mindi6863@gmail.com',
-      subject: `הודעה מ${formName}, מהאתר שושנת העמקים`,
+      to: TO_EMAIL,
+      subject: `הודעה מ${name}, מהאתר שושנת העמקים`,
       html: `
-        <p>${message}</p>
-        <p>אפשר להשיב לכתובת: <a href="mailto:${fromEmail}">${fromEmail}</a></p>
+        <p style="direction: rtl; text-align: right;">${message}</p>
+        <p style="direction: rtl; text-align: right;">אפשר להשיב לכתובת: <a href="mailto:${email}">${email}</a></p>
+        <p style="direction: rtl; text-align: right;">מספר טלפון: ${phone}</p>
       `,
     });
 
     await transport.sendMail({
       from: FROM_EMAIL,
-      to: fromEmail,
+      to: email,
       subject: `תודה על פנייתך לשושנת העמקים`,
-      html: `<p>תודה על פנייתך, ${formName}. אנו ניצור איתך קשר בהקדם.</p>`,
+      html: `
+        <div style="font-family: Arial, sans-serif; color: #333; line-height: 1.6; direction: rtl; text-align: right;">
+          <p>הי ${name}!</p>
+          <p>תודה על פנייתך.</p>
+          <p>ניצור איתך קשר בהקדם האפשרי.</p>
+          <hr style="border:none; border-top:1px solid #eee; margin:20px 0;">
+          <a href="https://app.shoshanath.com/" style="font-size:0.9em; color:#777;">בקרו באתר שלנו</a>
+        </div>`,
     });
 
     console.log("Both emails sent customer ",fromEmail);

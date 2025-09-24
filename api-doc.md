@@ -46,13 +46,11 @@ request
 # send email
 Path:
 POST
-- contact/sendEmail
+- contact
 request
 {
   body:
   { 
-    formName,
-    message,
-    fromEmail
+    name, message, email ,phone
   }
 }

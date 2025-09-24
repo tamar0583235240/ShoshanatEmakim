@@ -1,0 +1,55 @@
+.product-form {
+  position: relative;
+  max-width: 400px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  direction: rtl;
+  font-family: Arial, sans-serif;
+}
+
+.product-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #BC6C62; /* צבע בורדו עדין */
+}
+
+.product-form label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.product-form input,
+.product-form textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.product-form input[type="file"] {
+  padding: 3px;
+}
+
+.product-form button {
+  width: 100%;
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #BC6C62;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.product-form button:hover {
+  background-color: #BC6C62;
+}

@@ -1,0 +1,209 @@
+.navbar {
+    width: 100%;
+    height: 11vh;
+    background: var(--black, #1E1E1C);
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    top: 0;
+    box-shadow: 0.4px 0.4px 0.4px 0.4px rgba(255, 255, 255, 0.636);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar-container {
+    display: flex;
+    width: 88vw;
+    height: 6vh;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-image {
+    width: 6vw;
+}
+
+.navbar-menu-container {
+    width: 82vw;
+    height: 100%;
+}
+
+.navbar-menu {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-about-contact-container {
+    width: 15vw;
+    height: 100%;
+    margin-right: 10vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-item {
+    position: relative;
+}
+
+.navbar-link {
+    display: block;
+    padding: 12px 16px;
+    color: #333;
+    text-decoration: none;
+    font-size: 1.05rem;
+    border-radius: 4px;
+    color: var(--main, #BC6C62);
+    text-align: right;
+    font-family: 'Assistant';
+    src: url('../assets/fonts/Assistant-Regular.ttf') format('truetype');
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    transition: background 0.2s, color 0.2s;
+}
+
+.navbar-link:hover,
+.navbar-link:focus {
+    font-weight: bold;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    min-width: 160px;
+    background: #fff;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.10);
+    border-radius: 0 0 8px 8px;
+    padding: 8px 0;
+    margin: 0;
+    list-style: none;
+    z-index: 1001;
+}
+
+.dropdown-link {
+    display: block;
+    padding: 10px 18px;
+    color: #333;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.dropdown-link:hover,
+.dropdown-link:focus {
+    background: #f5f1ed;
+    color: #C6A383;
+}
+
+@media (max-width: 900px) {
+    .navbar-container {
+        flex-direction: column;
+        height: auto;
+        padding: 0 8px;
+    }
+
+    .navbar-menu {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+}
+
+/* כפתור המבורגר */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1002; /* מעל התפריט */
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: var(--main, #BC6C62);
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* אנימציית X כשהכפתור אקטיבי */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* במסכים קטנים */
+@media (max-width: 900px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .navbar-menu-container {
+    position: absolute;
+    top: 11vh;
+    right: 0;
+    width: 100%;
+    background: var(--black, #1E1E1C);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .navbar-menu-container.open {
+    max-height: 70vh;
+  }
+
+  .navbar-menu {
+    flex-direction: column;
+    gap: 0;
+    padding: 10px 0;
+    text-align: center;
+  }
+
+  .navbar-link {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+  }
+
+  .navbar-about-contact-container {
+    flex-direction: column;
+    gap: 8px;
+    margin: 12px 0 0 0;
+  }
+
+  .dropdown-menu {
+    position: relative;
+    box-shadow: none;
+    background: #2c2c2c;
+    border-radius: 0;
+  }
+
+  .dropdown-link {
+    color: #fff;
+  }
+
+  .dropdown-link:hover {
+    background: #444;
+    color: #C6A383;
+  }
+}
