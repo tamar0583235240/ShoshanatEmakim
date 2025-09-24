@@ -1,44 +1,49 @@
 import { useParams } from "react-router-dom";
-import { getData, deleteData } from "../../service/apiService";
+import { get, remove } from "../../service/apiService";
 import { useEffect, useState } from "react";
 import BouquetCard from "../../components/BouquetCard";
-import ProductForm from "./ProductForm"; // שימי לב לייבוא
+import ProductForm from "./ProductForm";
 import NavBar from "../../components/NavBar";
 
 const AdminSubCategoryPage: React.FC = () => {
   const { subCategory } = useParams<{ subCategory: string }>();
+  const [reload, setReload] = useState<number>(0);
   const [products, setProducts] = useState<any[]>([]);
   const [message, setMessage] = useState<string | null>(null);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const getProducts = async () => {
-    let response;
-    if(subCategory === undefined)
-       response = await getData(`/product/`); 
-    else
-      response = await getData(`/product/getByCategory/${subCategory}`);
-    if (response.status === 200) {
-      setProducts(response.data.data);
-    } else {
-      setMessage("שגיאה בטעינת המוצרים, נסו שוב.");
+    try {
+      let response;
+      if (!subCategory)
+        response = await get(`/product/`);
+      else
+        response = await get(`/product/getByCategory/${subCategory}`);
+
+      setProducts(response.data || []);
+      if (response.message) setMessage(response.message);
+    } catch (error: any) {
+      setMessage(error.message || "שגיאה לא צפויה");
+      setProducts([]); 
     }
   };
 
   const handleDeleteById = async (id: string) => {
-    console.log("Deleting product with ID:", id);
-    if (!id) return;
-    const response = await deleteData({},`/product/${id}`);
-    if (response) {
+    try {
+      if (!id) return;
+      const response = await remove(`/product/${id}`);
       setProducts((prev) => prev.filter((p) => p._id !== id));
-    } else {
-      setMessage("מחיקה נכשלה");
+      if (response.message) setMessage(response.message);
+      setReload(reload + 1);
+    } catch (error: any) {
+      setMessage(error.message || "שגיאה לא צפויה במחיקה");
     }
   };
 
   useEffect(() => {
     getProducts();
-  }, [subCategory]);
+  }, [subCategory, reload]);
 
   return (
     <div style={{ padding: "20px" }}>
@@ -74,7 +79,7 @@ const AdminSubCategoryPage: React.FC = () => {
               width: "100%",
               maxWidth: "300px",
             }}
-            
+
           >
             <BouquetCard id={item._id} name={item.name} image={item.imageURL} category={item.category} />
 
@@ -109,7 +114,7 @@ const AdminSubCategoryPage: React.FC = () => {
             zIndex: 1000,
           }}
         >
-            <ProductForm setIsModalOpen={setIsModalOpen} />
+          <ProductForm setIsModalOpen={setIsModalOpen} />
         </div>
       )}
     </div>

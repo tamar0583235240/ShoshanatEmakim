@@ -1,6 +1,6 @@
 import { Outlet, useParams } from "react-router-dom";
 import type { SubCategoryPageProps } from "../features/products/types/SubCategoryPageProps";
-import { getData } from "../service/apiService";
+import { get } from "../service/apiService";
 import { useEffect, useState } from "react";
 import BouquetCard from "../components/BouquetCard";
 import "../style/SubCategoryPage.css";
@@ -11,9 +11,10 @@ const SubCategoryPage: React.FC<SubCategoryPageProps> = () => {
   const [message, setMessage] = useState<string | null>(null);
 
   const getProducts = async () => {
-    const response = await getData(`/product/getByCategory/${subCategory}`);
-    if (response.status === 200) setProducts(response.data.data);
-    else setMessage("שגיאה בטעינת המוצרים, נסו שוב.");
+    const response = await get(`/product/getByCategory/${subCategory}`);
+    console.log(response);
+    setProducts(response.data);
+    response.message && setMessage("שגיאה בטעינת המוצרים, נסו שוב.");
   };
 
   useEffect(() => {

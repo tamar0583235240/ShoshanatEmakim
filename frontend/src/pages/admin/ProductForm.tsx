@@ -1,10 +1,11 @@
 import { useRef, useState } from "react";
 import "../../style/AddProduct.css";
 import { ENUM_SUB_CATEGORIES } from "../../types/Enums"
-import { postData } from "../../service/apiService";
+import { post } from "../../service/apiService";
 import ImageUploader from "../../components/ImageUploader";
 
 export default function ProductForm({ setIsModalOpen }: any) {
+    const [message, setMessage] = useState<string | null>(null);
     const [formData, setFormData] = useState<any>({
         category: "",
         name: "",
@@ -37,12 +38,12 @@ export default function ProductForm({ setIsModalOpen }: any) {
         data.append("name", formData.name);
         data.append("description", formData.description);
         if (croppedFile) data.append("image", croppedFile);
+
         try {
-            const res = await postData(data, "/product/add");
-            console.log("Success:", res);
+            await post("/product/add", data);
             setIsModalOpen(false);
-        } catch (error) {
-            console.error("Error:", error);
+        } catch (error: any) {
+            setMessage(error.message);
         }
     };
 
@@ -89,7 +90,7 @@ export default function ProductForm({ setIsModalOpen }: any) {
 
             <label>תמונה</label>
             <ImageUploader name="image" onChange={handleChange} ref={uploaderRef} />
-
+            {message && <p className="error-message">{message}</p>}
             <button type="submit">שמירה</button>
         </form>
     );
