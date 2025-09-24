@@ -9,38 +9,33 @@ import ProtectedRoute from "./components/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <AppLayout />,
     children: [
       { index: true, element: <HomePage /> },
       {
-        path: ':category',
+        path: ":category",
         children: [
+          { index: true, element: <CategoryPage /> },
+          { path: ":subCategory", element: <SubCategoryPage /> },
+        ],
+      },
+      {
+        path: "admin",
+        children: [
+          { index: true, element: <Navigate to="products" replace /> },
+          { path: "login", element: <AdminLogin /> },
           {
-            index: true,
-            element: <CategoryPage />,
+            path: "products/:category?/:subCategory?",
+            element: (
+              <ProtectedRoute>
+                <SubCategoryPage />
+              </ProtectedRoute>
+            ),
           },
-          {
-            path: ':subCategory',
-            element: <SubCategoryPage />,
-          }
         ],
       },
     ],
-  },
-  {
-    path: "/admin",
-    children: [
-      { index: true, element: <Navigate to="products" replace /> },
-      { path: "login", element: <AdminLogin /> },
-      {
-        path: "products/:category?/:subCategory?", element: (
-          <ProtectedRoute>
-            <SubCategoryPage />
-          </ProtectedRoute>
-        )
-      },
-    ]
   },
   { path: "*", element: <NotFound /> },
 ]);
