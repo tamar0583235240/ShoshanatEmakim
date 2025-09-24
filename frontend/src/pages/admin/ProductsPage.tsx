@@ -48,7 +48,7 @@ const AdminSubCategoryPage: React.FC = () => {
   return (
     <div style={{ padding: "20px" }}>
       <header>
-        <NavBar isAdmin={true} />
+        <NavBar />
       </header>
       <h1 style={{ marginBottom: "20px" }}>ניהול קטגוריה: {subCategory}</h1>
 

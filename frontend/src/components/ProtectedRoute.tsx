@@ -1,5 +1,4 @@
 import { Navigate } from "react-router-dom";
-import { useAdmin } from "../context/AdminContext";
 import type { JSX } from "react/jsx-dev-runtime";
 
 type Props = {
@@ -7,7 +6,7 @@ type Props = {
 };
 
 const ProtectedRoute = ({ children }: Props) => {
-  const { isLoggedIn } = useAdmin();
+  const isLoggedIn = localStorage.getItem("isadminloggedin")==="true" || false;
   if (!isLoggedIn) {
     return <Navigate to="/admin/login" replace />;
   }
