@@ -6,7 +6,6 @@ const {ENUM_SUB_CATEGORIES} = require('../../../shared/Enums.js');
 
 const productSchema = new Schema({
   category: { type: String, enum: ENUM_SUB_CATEGORIES, required: true },
-  number: { type: Number, required: true, unique: true },
   name: { type: String, required: true },  
   description: { type: String, default: '' },
   imageURL : { type: String,required:true },

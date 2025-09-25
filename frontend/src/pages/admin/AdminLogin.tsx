@@ -1,15 +1,24 @@
-import { useAdmin } from "../../context/AdminContext";
 import { useNavigate } from "react-router-dom";
+import { post } from "../../service/apiService";
+import { useState } from "react";
 
 const AdminLogin = () => {
-  const { login } = useAdmin();
   const navigate = useNavigate();
+  const [message, setMessage] = useState<string | null>(null);
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    // בדיקה מול השרת או סיסמה זמנית...
-    login();
-    navigate("/admin/products");
+    post("/admin/login", {
+      username: e.target[0].value,
+      password: e.target[1].value,
+    })
+      .then(() => {
+        localStorage.setItem("isadminloggedin", "true");
+        navigate("/admin/products");
+      })
+      .catch((error: any) => {
+        setMessage(error.message);
+      });
   };
 
   return (
@@ -17,6 +26,8 @@ const AdminLogin = () => {
       <input placeholder="שם משתמש" required />
       <input placeholder="סיסמה" type="password" required />
       <button type="submit">התחבר</button>
+      <br />
+      {message}
     </form>
   );
 };

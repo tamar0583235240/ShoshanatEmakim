@@ -5,7 +5,7 @@ const uploadImage = (fileBuffer) => {
   return new Promise((resolve, reject) => {
     const stream = cloudinary.uploader.upload_stream(
       {
-        folder: "products", // אפשר לשנות לפי הצורך
+        folder: "products",
         use_filename: true,
         overwrite: true,
       },
