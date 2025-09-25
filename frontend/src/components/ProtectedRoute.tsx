@@ -8,7 +8,7 @@ type Props = {
 
 const ProtectedRoute = ({ children }: Props) => {
   const { isLoggedIn } = useAdmin();
-  if (!isLoggedIn) {
+  if (isLoggedIn) {
     return <Navigate to="/admin/login" replace />;
   }
   return children;
