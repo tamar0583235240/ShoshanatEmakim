@@ -2,6 +2,8 @@
   background: black;
   color: #eee;
   padding: 64px 24px;
+  left: 0;
+  right: 0;
 }
 
 .about-hero__container {
@@ -9,8 +11,10 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1.1fr 1fr;
-  gap: 48px;
+  gap: 10px;
   align-items: center;
+  left: 0;
+  right: 0;
 }
 
 .about-hero__image-wrap {
