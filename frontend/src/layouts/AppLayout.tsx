@@ -9,11 +9,11 @@ const AppLayout = () => {
         <NavBar />
       </header>
 
-      <main style={{ padding: "1rem" }}>
+      <main>
         <Outlet />
       </main>
 
-      <footer style={{ padding: "1rem", textAlign: "center" }}>
+      <footer style={{ textAlign: "center" }}>
         <Footer />
       </footer>
     </div>
