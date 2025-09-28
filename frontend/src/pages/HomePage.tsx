@@ -15,7 +15,7 @@ const HomePage: React.FC = () => {
       const section = document.getElementById(location.state.scrollTo);
       if (section) {
         setTimeout(() => {
-          section.scrollIntoView({ behavior: "smooth" });
+          section.scrollIntoView({ behavior: "smooth" , block: "center"});
           window.history.replaceState({}, document.title);
         }, 100);
       }
