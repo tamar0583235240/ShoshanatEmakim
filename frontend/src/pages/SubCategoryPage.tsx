@@ -50,7 +50,7 @@ const SubCategoryPage: React.FC<SubCategoryPageProps> = () => {
   return (
     <div className="subcategory-page">
       <h1 className="subcategory-title">{subCategory}</h1>
-      {isAdmin && <button onClick={() => setIsModalOpen(true)}>➕ הוספת מוצר</button>}
+      {isAdmin && <button className="add-product-btn" onClick={() => setIsModalOpen(true)}>הוספת מוצר</button>}
       {message && <div className="error-message">{message}</div>}
 
       <div className="bouquet-grid-container">
@@ -63,15 +63,8 @@ const SubCategoryPage: React.FC<SubCategoryPageProps> = () => {
               image={item.imageURL}
             />
             {isAdmin && (
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  marginTop: "10px",
-                }}
-              >
-                <button>✏️ עדכון</button>
-                <button onClick={() => handleDeleteById(item._id)}>🗑 מחיקה</button>
+              <div className="admin-actions">
+                <button className="edit-btn">עדכון</button>
               </div>
             )}
           </div>
