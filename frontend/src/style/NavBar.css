@@ -2,7 +2,6 @@
     width: 100%;
     height: 11vh;
     background: var(--black, #1E1E1C);
-    position: fixed;
     left: 0;
     right: 0;
     z-index: 3;
