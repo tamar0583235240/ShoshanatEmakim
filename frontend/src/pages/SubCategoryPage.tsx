@@ -64,7 +64,7 @@ const SubCategoryPage: React.FC<SubCategoryPageProps> = () => {
             />
             {isAdmin && (
               <div className="admin-actions">
-                <button className="edit-btn">עדכון</button>
+                <button className="delete-btn" onClick={() => handleDeleteById(item._id)}>מחיקה</button>
               </div>
             )}
           </div>
