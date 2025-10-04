@@ -9,8 +9,13 @@ export const post = async (path = "/api", data: any = {}) => {
     });
     return response.data; // מחזיר את { data?, message? }
   } catch (error: any) {
-    return handleError(error);
+    if (error.response && error.response.data) {
+      throw error.response.data;
+    } else {
+      throw { message: "שגיאה לא צפויה" };
+    }
   }
+
 };
 
 export const get = async (path = "/api") => {
