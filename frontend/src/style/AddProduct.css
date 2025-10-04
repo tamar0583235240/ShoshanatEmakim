@@ -1,55 +1,89 @@
 .product-form {
-  position: relative;
-  max-width: 400px;
-  margin: 30px auto;
-  padding: 20px;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 60%;
+  margin: 0 auto;
+  padding: 3rem;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  font-family: "Heebo", sans-serif;
   direction: rtl;
-  font-family: Arial, sans-serif;
+  overflow-y: auto;
+  max-height: 90vh;
 }
 
 .product-form h2 {
   text-align: center;
-  margin-bottom: 20px;
-  color: #BC6C62; /* צבע בורדו עדין */
+  font-size: 2rem;
+  margin-bottom: 10px;
 }
 
 .product-form label {
-  display: block;
-  margin: 10px 0 5px;
-  font-weight: bold;
-  font-size: 14px;
+  font-weight: 600;
+  color: #222;
 }
 
 .product-form input,
+.product-form select,
 .product-form textarea {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 14px;
-  box-sizing: border-box;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.product-form input:focus,
+.product-form textarea:focus,
+.product-form select:focus {
+  border-color: #b35b52;
+  outline: none;
+  box-shadow: 0 0 4px rgba(179,91,82,0.4);
+}
+
+.product-form button[type="submit"] {
+  background-color: #b35b52;
+  color: #fff;
+  font-weight: 600;
+  padding: 10px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.2s;
+  position: sticky;
+  bottom: 0; 
+}
+
+.product-form button[type="submit"]:hover {
+  background-color: #963f38;
+}
+
+.error-message {
+  color: #b35b52;
+  text-align: center;
+  font-size: 0.9rem;
 }
 
 .product-form input[type="file"] {
-  padding: 3px;
-}
-
-.product-form button {
-  width: 100%;
-  margin-top: 15px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
   padding: 10px;
-  background-color: #BC6C62;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  font-size: 16px;
+  font-size: 0.95rem;
+  background-color: #fafafa;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: all 0.2s ease;
+  width: 100%;
 }
 
-.product-form button:hover {
-  background-color: #BC6C62;
+.product-form input[type="file"]:hover {
+  background-color: #f2f2f2;
+}
+
+.product-form .image-uploader {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
