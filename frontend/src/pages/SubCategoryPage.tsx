@@ -50,7 +50,7 @@ const SubCategoryPage: React.FC<SubCategoryPageProps> = () => {
   return (
     <div className="subcategory-page">
       <h1 className="subcategory-title">{subCategory}</h1>
-      {isAdmin && <button className="add-product-btn" onClick={() => setIsModalOpen(true)}>הוספת מוצר</button>}
+      {isAdmin && <button className="add-product-btn" onClick={() => setIsModalOpen(true)}>+ הוספת מוצר</button>}
       {message && <div className="error-message">{message}</div>}
 
       <div className="bouquet-grid-container">

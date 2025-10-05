@@ -50,10 +50,11 @@ export default function ProductForm({ setIsModalOpen }: any) {
     return (
         <form className="product-form" onSubmit={handleSubmit}>
             <button
+              type="button"
+              className="close-btn"
               onClick={() => setIsModalOpen(false)}
-              style={{ position: "absolute", top: 10, right: 10 }}
             >
-              ❌
+              X
             </button>
             <h2>הוספת מוצר חדש</h2>
 
