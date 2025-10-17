@@ -1,69 +1,6 @@
-/* .footer {
-  background-color: #BC6C62;
-  padding: 40px 60px;
-  margin-top: 40px;
-}
-
-.footer-container {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  flex-wrap: wrap;
-  color: black;
-  text-align: right;
-}
-
-.footer-section {
-  min-width: 150px;
-}
-
-.footer-section h3 {
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.footer-section ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  line-height: 1.8;
-}
-
-.footer-availability {
-  min-width: 200px;
-  margin-left: 30vw;
-}
-
-.footer-availability h4 {
-  margin-top: 20px;
-  font-weight: bold;
-}
-
-.footer-icon {
-  width: 18px;
-  display: inline;
-  margin-right: 5px;
-  vertical-align: middle;
-}
-
-.footer-icon-large {
-  width: 22px;
-  display: inline;
-  margin-right: 5px;
-  vertical-align: middle;
-}
-
-.footer a {
-  color: black;
-  text-decoration: none;
-}
-
-.footer a:hover {
-  text-decoration: none;
-} */
 .footer {
   background-color: #BC6C62;
-  padding: 40px 60px;
+  padding: 40px 60px 0;
   margin-top: 40px;
 }
 
@@ -74,6 +11,7 @@
   flex-wrap: wrap;
   color: black;
   text-align: right;
+  padding-bottom: 30px;
 }
 
 .footer-section {
@@ -123,6 +61,20 @@
 
 .footer a:hover {
   text-decoration: none;
+}
+
+.footer-bottom {
+  background-color: #000000;
+  padding: 15px 0;
+  text-align: center;
+  margin: 0 -60px;
+}
+
+.footer-bottom a {
+  color: #BC6C62;
+  margin: 0;
+  font-size: 14px;
+  font-style: bold;
 }
 
 @media (max-width: 1024px) {
@@ -133,7 +85,7 @@
 
 @media (max-width: 850px) {
   .footer {
-    padding: 30px 20px;
+    padding: 30px 20px 0;
   }
 
   .footer-container {
@@ -180,11 +132,21 @@
     font-size: 16px;
     margin-top: 25px;
   }
+
+  .footer-bottom {
+    margin: 0 -20px;
+    padding: 12px 0;
+  }
+
+  .footer-bottom a {
+    font-size: 13px;
+    font-style: bold;
+  }
 }
 
 @media (max-width: 480px) {
   .footer {
-    padding: 25px 15px;
+    padding: 25px 15px 0;
   }
 
   .footer-section {
@@ -208,5 +170,15 @@
   .footer-icon,
   .footer-icon-large {
     width: 15px;
+  }
+
+  .footer-bottom {
+    margin: 0 -15px;
+    padding: 10px 15px;
+  }
+
+  .footer-bottom a {
+    font-size: 11px;
+    line-height: 1.4;
   }
 }
