@@ -62,6 +62,16 @@ const Footer = () => {
           </h4>
         </div>
       </div>
+      <div className="footer-bottom">
+        <a
+          href="https://tamar-portfolio-umber.vercel.app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >© 2025 | Designed By: Tamar</a> <a
+          href="https://resonant-tapioca-77d510.netlify.app/" target="_blank"
+          rel="noopener noreferrer"
+        > & Mindy | All rights reserved</a>
+      </div>
     </footer>
   );
 };

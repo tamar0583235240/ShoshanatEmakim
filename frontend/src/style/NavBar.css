@@ -150,9 +150,9 @@
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   border-radius: 0 0 8px 8px;
   padding: 7px 0;
-  margin: 2vh;
+  margin: 0;
   list-style: none;
-  z-index: 0;
+  z-index: 1001;
   animation: fadeIn 0.2s ease;
   text-align: right;
 }
@@ -188,6 +188,7 @@
   display: none;
 }
 
+/* תיקון לטאבלט - 900px ומטה יעבור למצב מובייל */
 @media screen and (max-width: 1024px) {
   .navbar {
     height: 70px;
@@ -198,28 +199,29 @@
   }
 
   .logo-image {
-    width: 80px;
+    width: 70px;
   }
 
   .navbar-menu {
-    gap: 8px;
+    gap: 6px;
   }
 
   .navbar-link {
-    font-size: 16px;
-    padding: 10px 12px;
+    font-size: 14px;
+    padding: 10px 8px;
   }
 
   .navbar-about-contact-container {
     width: auto;
-    margin-right: 5vw;
-    gap: 10px;
+    margin-right: 3vw;
+    gap: 8px;
   }
 }
 
-@media screen and (max-width: 768px) {
+/* טאבלט - מעבר למצב מובייל */
+@media screen and (max-width: 900px) {
   .navbar {
-    height: 60px;
+    height: 65px;
   }
 
   .hamburger {
@@ -228,11 +230,11 @@
 
   .navbar-menu-container {
     position: fixed;
-    top: 60px;
+    top: 65px;
     right: -100%;
-    width: 65%;
-    max-width: 280px;
-    height: calc(100vh - 60px);
+    width: 70%;
+    max-width: 320px;
+    height: calc(100vh - 65px);
     background: #fff;
     transition: right 0.3s ease;
     overflow-y: auto;
@@ -344,10 +346,10 @@
   .navbar-overlay {
     display: block;
     position: fixed;
-    top: 60px;
+    top: 65px;
     left: 0;
     width: 100%;
-    height: calc(100vh - 60px);
+    height: calc(100vh - 65px);
     background: rgba(0, 0, 0, 0.5);
     z-index: 998;
     animation: fadeInOverlay 0.3s ease;
@@ -367,6 +369,7 @@
   }
 }
 
+/* טלפון קטן */
 @media screen and (max-width: 480px) {
   .navbar {
     height: 55px;
@@ -375,8 +378,8 @@
   .navbar-menu-container {
     top: 55px;
     height: calc(100vh - 55px);
-    width: 70%;
-    max-width: 250px;
+    width: 75%;
+    max-width: 260px;
   }
 
   .navbar-overlay {
@@ -395,5 +398,13 @@
 
   .hamburger span {
     height: 2.5px;
+  }
+
+  .navbar-link {
+    font-size: 16px;
+  }
+
+  .dropdown-link {
+    font-size: 14px;
   }
 }

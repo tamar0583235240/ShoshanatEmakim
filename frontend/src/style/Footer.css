@@ -1,79 +1,18 @@
-/* .footer {
-  background-color: #BC6C62;
-  padding: 40px 60px;
-  margin-top: 40px;
-}
-
-.footer-container {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  flex-wrap: wrap;
-  color: black;
-  text-align: right;
-}
-
-.footer-section {
-  min-width: 150px;
-}
-
-.footer-section h3 {
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.footer-section ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  line-height: 1.8;
-}
-
-.footer-availability {
-  min-width: 200px;
-  margin-left: 30vw;
-}
-
-.footer-availability h4 {
-  margin-top: 20px;
-  font-weight: bold;
-}
-
-.footer-icon {
-  width: 18px;
-  display: inline;
-  margin-right: 5px;
-  vertical-align: middle;
-}
-
-.footer-icon-large {
-  width: 22px;
-  display: inline;
-  margin-right: 5px;
-  vertical-align: middle;
-}
-
-.footer a {
-  color: black;
-  text-decoration: none;
-}
-
-.footer a:hover {
-  text-decoration: none;
-} */
 .footer {
   background-color: #BC6C62;
-  padding: 40px 60px;
+  padding: 40px 60px 0;
   margin-top: 40px;
 }
 
 .footer-container {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 40px;
-  flex-wrap: wrap;
   color: black;
   text-align: right;
+  padding-bottom: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .footer-section {
@@ -94,7 +33,6 @@
 
 .footer-availability {
   min-width: 200px;
-  margin-left: 30vw;
 }
 
 .footer-availability h4 {
@@ -125,19 +63,113 @@
   text-decoration: none;
 }
 
-@media (max-width: 1024px) {
-  .footer-availability {
-    margin-left: 5vw;
-  }
+.footer-bottom {
+  background-color: #000000;
+  padding: 15px 0;
+  text-align: center;
+  margin: 0 -60px;
 }
 
-@media (max-width: 850px) {
+.footer-bottom a {
+  color: #BC6C62;
+  margin: 0;
+  font-size: 14px;
+}
+
+/* טאבלט בינוני */
+@media (max-width: 1200px) {
   .footer {
-    padding: 30px 20px;
+    padding: 35px 40px 0;
   }
 
   .footer-container {
-    flex-direction: column;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px 40px;
+  }
+
+  .footer-section h3 {
+    font-size: 17px;
+  }
+
+  .footer-section ul {
+    font-size: 15px;
+    line-height: 1.9;
+  }
+
+  .footer-availability h3 {
+    font-size: 17px;
+  }
+
+  .footer-availability h4 {
+    font-size: 16px;
+    margin-top: 18px;
+  }
+
+  .footer-bottom {
+    margin: 0 -40px;
+    padding: 13px 0;
+  }
+
+  .footer-bottom a {
+    font-size: 13px;
+  }
+}
+
+/* טאבלט גדול */
+@media (max-width: 1024px) {
+  .footer {
+    padding: 35px 40px 0;
+  }
+
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .footer-section {
+    min-width: auto;
+  }
+
+  .footer-section h3 {
+    font-size: 17px;
+  }
+
+  .footer-section ul {
+    font-size: 15px;
+    line-height: 1.9;
+  }
+
+  .footer-availability {
+    min-width: auto;
+  }
+
+  .footer-availability h3 {
+    font-size: 17px;
+  }
+
+  .footer-availability h4 {
+    font-size: 16px;
+    margin-top: 18px;
+  }
+
+  .footer-bottom {
+    margin: 0 -40px;
+    padding: 13px 0;
+  }
+
+  .footer-bottom a {
+    font-size: 13px;
+  }
+}
+
+/* טאבלט קטן - מעבר למצב מובייל */
+@media (max-width: 850px) {
+  .footer {
+    padding: 30px 20px 0;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
     gap: 0;
     max-width: 100%;
   }
@@ -166,7 +198,6 @@
 
   .footer-availability {
     width: 100%;
-    margin-left: 0;
     text-align: center;
     padding: 25px 0;
   }
@@ -180,11 +211,20 @@
     font-size: 16px;
     margin-top: 25px;
   }
+
+  .footer-bottom {
+    margin: 0 -20px;
+    padding: 12px 0;
+  }
+
+  .footer-bottom a {
+    font-size: 13px;
+  }
 }
 
 @media (max-width: 480px) {
   .footer {
-    padding: 25px 15px;
+    padding: 25px 15px 0;
   }
 
   .footer-section {
@@ -208,5 +248,15 @@
   .footer-icon,
   .footer-icon-large {
     width: 15px;
+  }
+
+  .footer-bottom {
+    margin: 0 -15px;
+    padding: 10px 15px;
+  }
+
+  .footer-bottom a {
+    font-size: 11px;
+    line-height: 1.4;
   }
 }
