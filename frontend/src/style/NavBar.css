@@ -97,7 +97,6 @@
   height: 100%;
   display: flex;
   align-items: center;
-  width: 7vw;
 }
 
 .category-header {
@@ -123,11 +122,6 @@
   transition: all 0.2s ease;
   min-width: fit-content;
   white-space: nowrap;
-}
-
-.navbar-link:hover,
-.navbar-link:focus {
-  font-weight: bold;
 }
 
 .dropdown-toggle {
