@@ -5,12 +5,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow-x: hidden;
 }
 
 .video-container {
   position: relative;
   height: 100vh;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 video {
@@ -23,82 +28,88 @@ video {
   z-index: -1;
 }
 
+.video-container > div {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  text-align: right;
+  padding: 0 10%;
+  z-index: 1;
+  box-sizing: border-box;
+}
+
 .overlay-title {
-  position: absolute;
-  top: 35%;
-  right: 10%;
-  font-size: 6vw;
+  font-size: clamp(32px, 6vw, 80px);
   font-weight: bold;
   color: #BC6C62;
-  margin: 0;
+  margin: 0 0 20px 0;
+  word-wrap: break-word;
 }
 
 .overlay-subtitle {
-  position: absolute;
-  top: 50%;
-  right: 10%;
-  font-size: 4.5vw;
+  font-size: clamp(20px, 4.5vw, 60px);
   font-weight: 530;
   color: black;
   -webkit-text-stroke: 0.2px rgb(255, 255, 255);
-  margin: 0;
+  margin: 0 0 30px 0;
+  word-wrap: break-word;
 }
 
 .cta-button {
-  position: absolute;
-  top: 65%;
-  right: 10%;
+  display: inline-block;
   background-color: #BC6C62;
   color: black;
-  padding: 16px 28px;
-  font-size: 1.7vw;
+  padding: clamp(12px, 2vh, 16px) clamp(20px, 3vw, 28px);
+  font-size: clamp(16px, 1.7vw, 24px);
   font-weight: 550;
   text-decoration: none;
   transition: background 0.3s;
+  margin-top: 10px;
 }
 
 .cta-button:hover {
   background-color: #b55b52;
 }
 
+@media (max-width: 1024px) {
+  .video-container > div {
+    padding: 0 8%;
+  }
+}
+
 @media (max-width: 768px) {
+  .video-container > div {
+    text-align: center;
+    padding: 0 5%;
+  }
+
   .overlay-title {
-    font-size: 32px;
-    top: 30%;
-    right: 5%;
+    font-size: clamp(48px, 12vw, 64px);
+    margin: 0 0 25px 0;
   }
 
   .overlay-subtitle {
-    font-size: 20px;
-    top: 40%;
-    right: 5%;
+    font-size: clamp(24px, 7vw, 32px);
+    margin: 0 0 35px 0;
   }
 
   .cta-button {
-    font-size: 16px;
-    padding: 10px 20px;
-    top: 50%;
-    right: 5%;
+    font-size: clamp(18px, 5vw, 22px);
+    padding: 14px 24px;
   }
 }
 
 @media (max-width: 480px) {
   .overlay-title {
-    font-size: 24px;
-    top: 25%;
-    right: 5%;
+    font-size: clamp(42px, 13vw, 56px);
   }
 
   .overlay-subtitle {
-    font-size: 16px;
-    top: 35%;
-    right: 5%;
+    font-size: clamp(22px, 8vw, 28px);
   }
 
   .cta-button {
-    font-size: 14px;
-    padding: 8px 16px;
-    top: 45%;
-    right: 5%;
+    font-size: clamp(16px, 5.5vw, 20px);
+    padding: 12px 20px;
   }
 }

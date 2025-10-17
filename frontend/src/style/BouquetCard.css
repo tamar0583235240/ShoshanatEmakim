@@ -1,7 +1,14 @@
-.bouquet-card {
+ .bouquet-card {
   border: 1px solid #000000;
   overflow: hidden;
   transition: box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 100%;
+}
+
+.bouquet-card .bouquet-image {
+  width: 100%;
+  overflow: hidden;
 }
 
 .bouquet-card .bouquet-image img {
@@ -17,25 +24,36 @@
 }
 
 .bouquet-name {
-    text-align: center;
-    color: black;
-    background: white;
-    padding: 1vh;
-    height: 20%;
-    transition: all 0.3s ease;
+  text-align: center;
+  color: black;
+  background: white;
+  padding: 1vh;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
 }
 
 .bouquet-card:hover .bouquet-name {
-    background: black;
-    color: white;
+  background: black;
+  color: white;
 }
-/* קצת צל כדי להרגיש hover אבל בלי להזיז את כל הכרטיס */
+
 .bouquet-card:hover {
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .bouquet-category {
   font-size: 0.9rem;
   color: #666;
   margin-top: 4px;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .bouquet-card {
+    max-width: 500px;
+    margin: 0 auto;
+  }
 }
