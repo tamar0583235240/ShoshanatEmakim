@@ -11,6 +11,30 @@
   align-items: center;
   justify-content: center;
   position: fixed;
+  transition: transform 0.4s ease;
+}
+
+.navbar.hide {
+  transform: translateY(-100%);
+}
+
+.navbar.show {
+  transform: translateY(0);
+}
+
+.navbar {
+  width: 100%;
+  height: 11vh;
+  background: var(--black, #1e1e1c);
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  top: 0;
+  box-shadow: 0.4px 0.4px 0.4px 0.4px rgba(255, 255, 255, 0.636);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
 }
 
 .navbar-container {
@@ -188,7 +212,6 @@
   display: none;
 }
 
-/* תיקון לטאבלט - 900px ומטה יעבור למצב מובייל */
 @media screen and (max-width: 1024px) {
   .navbar {
     height: 70px;
@@ -218,7 +241,6 @@
   }
 }
 
-/* טאבלט - מעבר למצב מובייל */
 @media screen and (max-width: 900px) {
   .navbar {
     height: 65px;
@@ -369,7 +391,6 @@
   }
 }
 
-/* טלפון קטן */
 @media screen and (max-width: 480px) {
   .navbar {
     height: 55px;

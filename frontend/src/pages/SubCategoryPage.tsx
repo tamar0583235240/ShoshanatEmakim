@@ -1,45 +1,240 @@
-import { Outlet, useParams } from "react-router-dom";
-import type { SubCategoryPageProps } from "../features/products/types/SubCategoryPageProps";
-import { get, remove } from "../service/apiService";
-import { useEffect, useState } from "react";
-import BouquetCard from "../components/BouquetCard";
-import "../style/SubCategoryPage.css";
-import ProductForm from "./admin/ProductForm";
+// import { Outlet, useParams } from "react-router-dom";
+// import type { SubCategoryPageProps } from "../features/products/types/SubCategoryPageProps";
+// import { get, remove } from "../service/apiService";
+// import { useEffect, useState } from "react";
+// import BouquetCard from "../components/BouquetCard";
+// import "../style/SubCategoryPage.css";
+// import ProductForm from "./admin/ProductForm";
 
-const SubCategoryPage: React.FC<SubCategoryPageProps> = () => {
+// const SubCategoryPage: React.FC<SubCategoryPageProps> = () => {
+//   const { subCategory } = useParams<{ subCategory: string }>();
+//   const [reload, setReload] = useState<number>(0);
+//   const isAdmin = localStorage.getItem("isadminloggedin") === "true" || false;
+//   const [products, setProducts] = useState<any[]>([]);
+//   const [message, setMessage] = useState<string | null>(null);
+//   const [isModalOpen, setIsModalOpen] = useState(false);
+
+//   const getProducts = async () => {
+//     setMessage("");
+//     const response = await get(subCategory ? `/product/getByCategory/${subCategory}` : `/product/`);
+//     if (response.error) {
+//       setMessage(response.message || "שגיאה לא צפויה");
+//       setProducts([]);
+//       return;
+//     }
+//     if (response.data && response.data.length > 0) {
+//       setProducts(response.data);
+//     } else {
+//       setProducts([]);
+//       setMessage(response.message || "לא נמצאו מוצרים");
+//     }
+//   };
+
+//   const handleDeleteById = async (id: string) => {
+//     try {
+//       if (!id) return;
+//       const response = await remove(`/product/${id}`);
+//       setProducts((prev) => prev.filter((p) => p._id !== id));
+//       if (response.message) setMessage(response.message);
+//       setReload(reload + 1);
+//     } catch (error: any) {
+//       setMessage(error.message || "שגיאה לא צפויה במחיקה");
+//     }
+//   };
+
+//   useEffect(() => {
+//     getProducts();
+//   }, [subCategory, reload]);
+
+//   return (
+//     <div className="subcategory-page">
+//       <h1 className="subcategory-title">{subCategory}</h1>
+//       {isAdmin && <button className="add-product-btn" onClick={() => setIsModalOpen(true)}>+ הוספת מוצר</button>}
+//       {message && <div className="error-message">{message}</div>}
+
+//       <div className="bouquet-grid-container">
+//         {products.map((item) => (
+//           <div key={item._id}>
+//             <BouquetCard
+//               key={item._id}
+//               id={item._id}
+//               name={item.name}
+//               image={item.imageURL}
+//             />
+//             {isAdmin && (
+//               <div className="admin-actions">
+//                 <button className="delete-btn" onClick={() => handleDeleteById(item._id)}>מחיקה</button>
+//               </div>
+//             )}
+//           </div>
+//         ))}
+//       </div>
+//       <Outlet />
+//       {isModalOpen && (
+//         <div className="modal-overlay">
+//           <ProductForm setIsModalOpen={setIsModalOpen} />
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default SubCategoryPage;
+// import { Outlet, useParams } from "react-router-dom";
+// import { useEffect, useState } from "react";
+// import { get, remove } from "../service/apiService";
+// import BouquetCard from "../components/BouquetCard";
+// import ProductForm from "./admin/ProductForm";
+// import "../style/SubCategoryPage.css";
+
+// const SubCategoryPage = () => {
+//   const { subCategory } = useParams<{ subCategory: string }>();
+//   const [reload, setReload] = useState(0);
+//   const [products, setProducts] = useState<any[]>([]);
+//   const [message, setMessage] = useState<string | null>(null);
+//   const [isModalOpen, setIsModalOpen] = useState(false);
+//   const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
+//   const isAdmin = localStorage.getItem("isadminloggedin") === "true" || false;
+
+//   const getProducts = async () => {
+//     setMessage("");
+//     const response = await get(
+//       subCategory ? `/product/getByCategory/${subCategory}` : `/product/`
+//     );
+//     if (response.error) {
+//       setMessage(response.message || "שגיאה לא צפויה");
+//       setProducts([]);
+//     } else if (response.data?.length > 0) {
+//       setProducts(response.data);
+//     } else {
+//       setMessage("לא נמצאו מוצרים");
+//       setProducts([]);
+//     }
+//   };
+
+//   const handleDeleteById = async (id: string) => {
+//     try {
+//       if (!id) return;
+//       await remove(`/product/${id}`);
+//       setProducts((prev) => prev.filter((p) => p._id !== id));
+//       setReload(reload + 1);
+//     } catch {
+//       setMessage("שגיאה במחיקה");
+//     }
+//   };
+
+//   useEffect(() => {
+//     getProducts();
+//   }, [subCategory, reload]);
+
+//   return (
+//     <div className="subcategory-page">
+//       <h1 className="subcategory-title">{subCategory}</h1>
+
+//       {isAdmin && (
+//         <button
+//           className="add-product-btn"
+//           onClick={() => setIsModalOpen(true)}
+//         >
+//           + הוספת מוצר
+//         </button>
+//       )}
+
+//       {message && <div className="error-message">{message}</div>}
+
+//       <div className="bouquet-grid-container">
+//         {products.map((item) => (
+//           <div key={item._id} className="bouquet-wrapper">
+//             <BouquetCard
+//               id={item._id}
+//               name={item.name}
+//               image={item.imageURL}
+//               onClick={() => setSelectedProduct(item)}
+//             />
+//             {isAdmin && (
+//               <div className="admin-actions">
+//                 <button
+//                   className="delete-btn"
+//                   onClick={() => handleDeleteById(item._id)}
+//                 >
+//                   מחיקה
+//                 </button>
+//               </div>
+//             )}
+//           </div>
+//         ))}
+//       </div>
+
+//       {selectedProduct && (
+//         <div className="popup-overlay" onClick={() => setSelectedProduct(null)}>
+//           <div className="popup-content" onClick={(e) => e.stopPropagation()}>
+//             <button
+//               className="popup-close"
+//               onClick={() => setSelectedProduct(null)}
+//             >
+//               ×
+//             </button>
+//             <img src={selectedProduct.imageURL} alt={selectedProduct.name} />
+//             <h2>{selectedProduct.name}</h2>
+//             {selectedProduct.description && (
+//               <p className="popup-description">{selectedProduct.description}</p>
+//             )}
+//           </div>
+//         </div>
+//       )}
+
+//       {isModalOpen && (
+//         <div className="modal-overlay">
+//           <ProductForm setIsModalOpen={setIsModalOpen} />
+//         </div>
+//       )}
+
+//       <Outlet />
+//     </div>
+//   );
+// };
+
+// export default SubCategoryPage;
+import { Outlet, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { get, remove } from "../service/apiService";
+import BouquetCard from "../components/BouquetCard";
+import ProductForm from "./admin/ProductForm";
+import "../style/SubCategoryPage.css";
+
+const SubCategoryPage = () => {
   const { subCategory } = useParams<{ subCategory: string }>();
-  const [reload, setReload] = useState<number>(0);
-  const isAdmin = localStorage.getItem("isadminloggedin") === "true" || false;
+  const [reload, setReload] = useState(0);
   const [products, setProducts] = useState<any[]>([]);
   const [message, setMessage] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
+  const isAdmin = localStorage.getItem("isadminloggedin") === "true" || false;
 
   const getProducts = async () => {
     setMessage("");
-    const response = await get(subCategory ? `/product/getByCategory/${subCategory}` : `/product/`);
-    console.log("response", response);
+    const response = await get(
+      subCategory ? `/product/getByCategory/${subCategory}` : `/product/`
+    );
     if (response.error) {
       setMessage(response.message || "שגיאה לא צפויה");
       setProducts([]);
-      return;
-    }
-    if (response.data && response.data.length > 0) {
+    } else if (response.data?.length > 0) {
       setProducts(response.data);
     } else {
+      setMessage("לא נמצאו מוצרים");
       setProducts([]);
-      setMessage(response.message || "לא נמצאו מוצרים");
     }
   };
 
   const handleDeleteById = async (id: string) => {
     try {
       if (!id) return;
-      const response = await remove(`/product/${id}`);
+      await remove(`/product/${id}`);
       setProducts((prev) => prev.filter((p) => p._id !== id));
-      if (response.message) setMessage(response.message);
       setReload(reload + 1);
-    } catch (error: any) {
-      setMessage(error.message || "שגיאה לא צפויה במחיקה");
+    } catch {
+      setMessage("שגיאה במחיקה");
     }
   };
 
@@ -49,46 +244,73 @@ const SubCategoryPage: React.FC<SubCategoryPageProps> = () => {
 
   return (
     <div className="subcategory-page">
+      <div className="breadcrumb">
+        {/* עמוד הבית <span>›</span> {Category} <span>›</span> {subCategory} */}
+        עמוד הבית <span>›</span> קטגוריה <span>›</span> {subCategory}
+      </div>
+
       <h1 className="subcategory-title">{subCategory}</h1>
-      {isAdmin && <button className="add-product-btn" onClick={() => setIsModalOpen(true)}>+ הוספת מוצר</button>}
+      <div className="title-underline"></div>
+
+      {isAdmin && (
+        <button
+          className="add-product-btn"
+          onClick={() => setIsModalOpen(true)}
+        >
+          + הוספת מוצר
+        </button>
+      )}
+
       {message && <div className="error-message">{message}</div>}
 
       <div className="bouquet-grid-container">
         {products.map((item) => (
-          <div key={item._id}>
+          <div key={item._id} className="bouquet-wrapper">
             <BouquetCard
-              key={item._id}
               id={item._id}
               name={item.name}
               image={item.imageURL}
+              onClick={() => setSelectedProduct(item)}
             />
             {isAdmin && (
               <div className="admin-actions">
-                <button className="delete-btn" onClick={() => handleDeleteById(item._id)}>מחיקה</button>
+                <button
+                  className="delete-btn"
+                  onClick={() => handleDeleteById(item._id)}
+                >
+                  מחיקה
+                </button>
               </div>
             )}
           </div>
         ))}
       </div>
-      <Outlet />
+
+      {selectedProduct && (
+        <div className="popup-overlay" onClick={() => setSelectedProduct(null)}>
+          <div className="popup-content" onClick={(e) => e.stopPropagation()}>
+            <button
+              className="popup-close"
+              onClick={() => setSelectedProduct(null)}
+            >
+              ×
+            </button>
+            <img src={selectedProduct.imageURL} alt={selectedProduct.name} />
+            <h2>{selectedProduct.name}</h2>
+            {selectedProduct.description && (
+              <p className="popup-description">{selectedProduct.description}</p>
+            )}
+          </div>
+        </div>
+      )}
+
       {isModalOpen && (
-        <div
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            background: "rgba(0,0,0,0.5)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            zIndex: 1000,
-          }}
-        >
+        <div className="modal-overlay">
           <ProductForm setIsModalOpen={setIsModalOpen} />
         </div>
       )}
+
+      <Outlet />
     </div>
   );
 };

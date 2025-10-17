@@ -1,4 +1,4 @@
- .bouquet-card {
+ /* .bouquet-card {
   border: 1px solid #000000;
   overflow: hidden;
   transition: box-shadow 0.3s ease;
@@ -55,5 +55,53 @@
   .bouquet-card {
     max-width: 500px;
     margin: 0 auto;
+  }
+} */
+
+.bouquet-card {
+  border: 1px solid #eee;
+  background: #fff;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.bouquet-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+}
+
+.bouquet-image {
+  width: 100%;
+  overflow: hidden;
+}
+
+.bouquet-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.bouquet-card:hover .bouquet-image img {
+  transform: scale(1.05);
+}
+
+.bouquet-name {
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 12px 8px;
+  color: #222;
+  background: #fafafa;
+  border-top: 1px solid #eee;
+}
+
+@media (max-width: 900px) {
+  .bouquet-grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   }
 }
