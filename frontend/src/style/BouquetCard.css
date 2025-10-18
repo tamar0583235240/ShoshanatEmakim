@@ -1,10 +1,12 @@
-.bouquet-card {
+/* .bouquet-card {
   border: 1px solid #eee;
   background: #fff;
   overflow: hidden;
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
 }
 
 .bouquet-card:hover {
@@ -14,6 +16,7 @@
 .bouquet-image {
   width: 100%;
   overflow: hidden;
+  position: relative;
 }
 
 .bouquet-image img {
@@ -28,18 +31,166 @@
   transform: scale(1.05);
 }
 
+.bouquet-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 8px 12px;
+  background: #fafafa;
+  border-top: 1px solid #eee;
+}
+
 .bouquet-name {
   font-size: 1.05rem;
   font-weight: 600;
-  text-align: center;
-  padding: 12px 8px;
   color: #222;
-  background: #fafafa;
-  border-top: 1px solid #eee;
+  text-align: center;
+}
+
+.delete-btn-footer {
+  position: absolute;
+  left: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #b35b52;
+  transition: transform 0.2s ease, color 0.2s ease;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.delete-btn-footer:hover {
+  transform: scale(1.2);
+}
+
+.trash-icon {
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
+
+.bouquet-category {
+  font-size: 0.85rem;
+  color: #666;
+  text-align: center;
+  margin-bottom: 8px;
 }
 
 @media (max-width: 900px) {
   .bouquet-grid-container {
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+} */
+.bouquet-grid-container {
+  display:flex ;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  justify-items: stretch;
+  justify-content: start;
+  padding: 20px;
+  box-sizing: border-box;
+  direction: rtl;
+}
+
+.bouquet-card {
+  width: 100%;
+  max-width: 280px;
+  border: 1px solid #eee;
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.bouquet-card:hover {
+  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+}
+
+.bouquet-image {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.bouquet-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.bouquet-card:hover .bouquet-image img {
+  transform: scale(1.05);
+}
+
+.bouquet-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 8px 12px;
+  background: #fafafa;
+  border-top: 1px solid #eee;
+}
+
+.bouquet-name {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #222;
+  text-align: center;
+}
+
+.delete-btn-footer {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #b35b52;
+  transition: transform 0.2s ease, color 0.2s ease;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.delete-btn-footer:hover {
+  transform: scale(1.2);
+}
+
+.trash-icon {
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
+
+.bouquet-category {
+  font-size: 0.85rem;
+  color: #666;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+@media (max-width: 1200px) {
+  .bouquet-grid-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .bouquet-grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .bouquet-grid-container {
+    grid-template-columns: 1fr;
   }
 }

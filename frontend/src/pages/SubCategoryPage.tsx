@@ -35,6 +35,7 @@ const SubCategoryPage = () => {
       if (!id) return;
       await remove(`/product/${id}`);
       setProducts((prev) => prev.filter((p) => p._id !== id));
+      setSelectedProduct(null);
       setReload(reload + 1);
     } catch {
       setMessage("שגיאה במחיקה");
@@ -48,7 +49,6 @@ const SubCategoryPage = () => {
   return (
     <div className="subcategory-page">
       <div className="breadcrumb">
-        {/* עמוד הבית <span>›</span> {Category} <span>›</span> {subCategory} */}
         עמוד הבית <span>›</span> קטגוריה <span>›</span> {subCategory}
       </div>
 
@@ -68,25 +68,15 @@ const SubCategoryPage = () => {
 
       <div className="bouquet-grid-container">
         {products.map((item) => (
-          <div key={item._id} className="bouquet-wrapper">
-            <BouquetCard
-              id={item._id}
-              name={item.name}
-              image={item.imageURL}
-              description={item.description}
-              onClick={() => setSelectedProduct(item)}
-            />
-            {isAdmin && (
-              <div className="admin-actions">
-                <button
-                  className="delete-btn"
-                  onClick={() => handleDeleteById(item._id)}
-                >
-                  מחיקה
-                </button>
-              </div>
-            )}
-          </div>
+          <BouquetCard
+            key={item._id}
+            id={item._id}
+            name={item.name}
+            image={item.imageURL}
+            description={item.description}
+            onClick={() => setSelectedProduct(item)}
+            onDelete={isAdmin ? () => handleDeleteById(item._id) : undefined}
+          />
         ))}
       </div>
 
@@ -99,8 +89,34 @@ const SubCategoryPage = () => {
             >
               ×
             </button>
+
             <img src={selectedProduct.imageURL} alt={selectedProduct.name} />
-            <h2>{selectedProduct.name}</h2>
+            
+            <div className="popup-footer">
+              <h2 className="popup-name">{selectedProduct.name}</h2>
+              {isAdmin && (
+                <button
+                  className="delete-btn-popup-footer"
+                  onClick={() => handleDeleteById(selectedProduct._id)}
+                  title="מחיקה"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="trash-icon"
+                  >
+                    <polyline points="3 6 5 6 21 6" />
+                    <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6m3-3h8a2 2 0 0 1 2 2v1H6V5a2 2 0 0 1 2-2z" />
+                  </svg>
+                </button>
+              )}
+            </div>
+
             {selectedProduct.description && (
               <p className="popup-description">{selectedProduct.description}</p>
             )}
