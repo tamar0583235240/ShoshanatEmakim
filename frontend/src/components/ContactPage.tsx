@@ -55,6 +55,10 @@ const ContactPage: React.FC = () => {
     } 
   }; 
  
+  const address = "רבי שמעון בר יוחאי 15, מודיעין עילית";
+  const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+  const wazeUrl = `https://waze.com/ul?q=${encodeURIComponent(address)}`;
+ 
   return ( 
     <section className="contact-section"> 
       <div className="form-container"> 
@@ -109,6 +113,24 @@ const ContactPage: React.FC = () => {
           <p><i className="fas fa-phone"></i>08-9744553</p> 
           <p><i className="fas fa-mobile-alt"></i>053-319-1206</p> 
           <p><i className="fas fa-envelope"></i>9744553@gmail.com</p> 
+          
+          <div>
+            <a 
+              href={googleMapsUrl} 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              פתח ב-Google Maps
+            </a>
+            <br />
+            <a 
+              href={wazeUrl} 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              נווט עם Waze
+            </a>
+          </div>
         </div> 
       </div> 
     </section> 
