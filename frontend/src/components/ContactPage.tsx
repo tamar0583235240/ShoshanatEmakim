@@ -113,22 +113,12 @@ const ContactPage: React.FC = () => {
           <p><i className="fas fa-phone"></i>08-9744553</p> 
           <p><i className="fas fa-mobile-alt"></i>053-319-1206</p> 
           <p><i className="fas fa-envelope"></i>9744553@gmail.com</p> 
-          
-          <div>
-            <a 
-              href={googleMapsUrl} 
-              target="_blank" 
-              rel="noopener noreferrer"
-            >
-              פתח ב-Google Maps
+          <div className="maps-links">
+            <a href={googleMapsUrl} target="_blank" rel="noopener noreferrer">
+              <img src="/google-maps-icon.png" alt="Google Maps" />
             </a>
-            <br />
-            <a 
-              href={wazeUrl} 
-              target="_blank" 
-              rel="noopener noreferrer"
-            >
-              נווט עם Waze
+            <a href={wazeUrl} target="_blank" rel="noopener noreferrer">
+              <img src="/waze-icon.png" alt="Waze" />
             </a>
           </div>
         </div> 
