@@ -8,10 +8,11 @@ type BouquetProps = {
   name: string;
   image: string;
   category?: string;
+  description?: string;
   onClick?: () => void;
 };
 
-const BouquetCard: React.FC<BouquetProps> = ({ id, name, image, category, onClick }) => {
+const BouquetCard: React.FC<BouquetProps> = ({ id, name, image, category,description, onClick }) => {
   return (
     <div className="bouquet-card" onClick={onClick}>
       <div className="bouquet-image">

@@ -73,6 +73,7 @@ const SubCategoryPage = () => {
               id={item._id}
               name={item.name}
               image={item.imageURL}
+              description={item.description}
               onClick={() => setSelectedProduct(item)}
             />
             {isAdmin && (
