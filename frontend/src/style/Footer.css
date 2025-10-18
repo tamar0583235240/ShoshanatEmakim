@@ -71,12 +71,11 @@
 }
 
 .footer-bottom a {
-  color: #BC6C62;
+  color: #c28178;
   margin: 0;
   font-size: 14px;
 }
 
-/* טאבלט בינוני */
 @media (max-width: 1200px) {
   .footer {
     padding: 35px 40px 0;
@@ -115,7 +114,6 @@
   }
 }
 
-/* טאבלט גדול */
 @media (max-width: 1024px) {
   .footer {
     padding: 35px 40px 0;
@@ -162,7 +160,6 @@
   }
 }
 
-/* טאבלט קטן - מעבר למצב מובייל */
 @media (max-width: 850px) {
   .footer {
     padding: 30px 20px 0;

@@ -1,0 +1,33 @@
+.category-page {
+  padding: 20px;
+  max-width: 90%;
+  margin: 60px auto 0 auto;
+}
+
+.breadcrumb {
+  font-size: 0.9rem;
+  color: #666;
+  text-align: right;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.breadcrumb span {
+  color: #999;
+  margin: 0 6px;
+}
+
+.category-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #b35b52;
+  margin-bottom: 10px;
+  text-shadow: 0 1px 2px rgba(136, 136, 136, 0.25);
+}
+
+.title-underline {
+  border-bottom: 1px solid #ddd;
+  width: 80vw;
+  margin: 0 auto 60px auto;
+}
