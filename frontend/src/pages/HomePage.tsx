@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import "../style/HomePage.css"
 import ContactPage from "../components/ContactPage";
-import mockImg from "../assets/mok-img.jpg";
+import mockImg from "../assets/mok-img.png";
 import BouquetSection from "../components/BouquetSection";
 import HeroSection from "../components/HeroSection";
 import AboutUsHero from "../components/AboutUsHero";

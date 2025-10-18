@@ -22,7 +22,7 @@ const BouquetSection: React.FC<BouquetSectionProps> = ({ title, bouquets, route 
     <div className="bouquet-section">
       <h2 className="bouquet-section-title">{title}</h2>
       <div className="bouquet-grid">
-        {bouquets.slice(0, 3).map((b) => (
+        {bouquets.slice(0, 4).map((b) => (
           <BouquetCard key={b.id} id={b.id} name={b.name} image={b.image} />
         ))}
       </div>
