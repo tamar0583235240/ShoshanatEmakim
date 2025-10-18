@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import "../style/BouquetCard.css";
 
@@ -8,12 +6,11 @@ type BouquetProps = {
   name: string;
   image: string;
   category?: string;
-  onClick?: () => void;
 };
 
-const BouquetCard: React.FC<BouquetProps> = ({ id, name, image, category, onClick }) => {
+const BouquetCard: React.FC<BouquetProps> = ({ id, name, image, category }) => {
   return (
-    <div className="bouquet-card" onClick={onClick}>
+    <div className="bouquet-card">
       <div className="bouquet-image">
         <img id={id} src={image} alt={name} />
       </div>

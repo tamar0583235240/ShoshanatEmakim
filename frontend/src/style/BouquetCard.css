@@ -2,14 +2,12 @@
   border: 1px solid #eee;
   background: #fff;
   overflow: hidden;
-  border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   cursor: pointer;
 }
 
 .bouquet-card:hover {
-  transform: translateY(-4px);
   box-shadow: 0 8px 18px rgba(0,0,0,0.15);
 }
 

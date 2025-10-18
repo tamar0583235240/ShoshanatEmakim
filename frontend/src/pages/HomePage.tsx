@@ -25,7 +25,6 @@ const HomePage: React.FC = () => {
   return (
     <div id="home">
       <HeroSection />
-
       <BouquetSection
         title="זרי הכלה הפופולריים שלנו"
         bouquets={[
