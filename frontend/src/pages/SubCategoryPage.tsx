@@ -1,4 +1,4 @@
-import { Outlet, useParams } from "react-router-dom";
+import { Link, Outlet, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { get, remove } from "../service/apiService";
 import BouquetCard from "../components/BouquetCard";
@@ -7,6 +7,7 @@ import "../style/SubCategoryPage.css";
 
 const SubCategoryPage = () => {
   const { subCategory } = useParams<{ subCategory: string }>();
+  const { category } = useParams<{ category: string }>();
   const [reload, setReload] = useState(0);
   const [products, setProducts] = useState<any[]>([]);
   const [message, setMessage] = useState<string | null>(null);
@@ -14,10 +15,12 @@ const SubCategoryPage = () => {
   const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
   const isAdmin = localStorage.getItem("isadminloggedin") === "true" || false;
 
+  const isHebrew = (str = "") => /^[\u0590-\u05FF\s"'\-]+$/.test(str);
+
   const getProducts = async () => {
     setMessage("");
     const response = await get(
-      subCategory ? `/product/getByCategory/${subCategory}` : `/product/`
+      subCategory ? `/product/getByCategory/${subCategory}` : category ? `/product/getByCategory/${category}` : `/product/`
     );
     if (response.error) {
       setMessage(response.message || "שגיאה לא צפויה");
@@ -49,7 +52,21 @@ const SubCategoryPage = () => {
   return (
     <div className="subcategory-page">
       <div className="breadcrumb">
-        עמוד הבית <span>›</span> קטגוריה <span>›</span> {subCategory}
+        <Link to="/">עמוד הבית</Link>
+
+        {isHebrew(category) && category && (
+          <>
+            <span>›</span>
+            <Link to={`/${category}`}>{category}</Link>
+          </>
+        )}
+
+        {isHebrew(subCategory) && subCategory && (
+          <>
+            <span>›</span>
+            <Link to={`/${category}/${subCategory}`}>{subCategory}</Link>
+          </>
+        )}
       </div>
 
       <h1 className="subcategory-title">{subCategory}</h1>
@@ -91,7 +108,7 @@ const SubCategoryPage = () => {
             </button>
 
             <img src={selectedProduct.imageURL} alt={selectedProduct.name} />
-            
+
             <div className="popup-footer">
               <h2 className="popup-name">{selectedProduct.name}</h2>
               {isAdmin && (
