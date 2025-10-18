@@ -121,13 +121,14 @@
   font-family: "Assistant", sans-serif;
   font-weight: 500;
   color: #161616;
-  margin-bottom: 15px;
+  margin-bottom: 16px;
 }
 
 .popup-description {
   font-size: 1rem;
   color: #666;
   line-height: 1.4;
+  margin-bottom: 8px;
 }
 
 .delete-btn-popup {
