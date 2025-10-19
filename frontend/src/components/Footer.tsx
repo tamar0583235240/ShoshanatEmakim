@@ -2,8 +2,27 @@ import { Link } from "react-router-dom";
 import carIcon from "../assets/icons/lucide_car.svg";
 import clockIcon from "../assets/icons/lucide_clock.svg";
 import "../style/Footer.css";
+import { useEffect, useState } from "react";
+import { get } from "../service/apiService";
 
 const Footer = () => {
+  const [categories, setCategories] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response: any = await get("/categories/");
+        if (response.data) {
+            setCategories(response.data);
+          }
+        } catch (error) {
+          setCategories([{ name: "שגיאה בטעינת קטגוריות" }]);
+        }
+      };
+  
+      fetchCategories();
+    }, []);
+  
   return (
     <footer className="footer">
       <div className="footer-container">
@@ -35,14 +54,12 @@ const Footer = () => {
         <div className="footer-section">
           <h3>קטגוריות</h3>
           <ul>
-            <li><Link to="/זרי אירוסין">זרי אירוסין</Link></li>
-            <li><Link to="/זרי כלה">זרי כלה</Link></li>
-            <li><Link to="/סידורי פרחים">סידורי פרחים</Link></li>
-            <li><Link to="/עיצובי מתנות">עיצובי מתנות</Link></li>
-            <li><Link to="/מלאכותי">מלאכותי</Link></li>
-            <li><Link to="/עציצים">עציצים</Link></li>
-            <li><Link to="/חגים">חגים</Link></li>
-            <li><Link to="/ארועים">ארועים</Link></li>
+            {categories.map((category: any) => (
+              !category.parent && (
+              <li key={category._id}>
+                <Link to={`/${category.name}`}>{category.name}</Link>
+              </li>)
+            ))}
           </ul>
         </div>
 
