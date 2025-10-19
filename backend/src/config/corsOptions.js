@@ -1,7 +1,7 @@
 var corsOptions = {
   origin: [
     process.env.FRONTEND_URL,
-    "https://shoshanatemakim.onrender.com"
+    "https://shoshanat-front.vercel.app/"
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
