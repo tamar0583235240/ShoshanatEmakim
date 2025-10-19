@@ -12,12 +12,10 @@ const login = (req, res) => {
   }
 
   try {
-    // יצירת טוקן
     const token = jwt.sign({ role: "admin", username }, process.env.JWT_SECRET, {
       expiresIn: "1d",
     });
     console.log(`token: ${token}`);
-    // שמירת הטוקן בעוגייה
     res.cookie("token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
