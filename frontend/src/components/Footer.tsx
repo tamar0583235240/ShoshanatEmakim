@@ -57,7 +57,7 @@ const Footer = () => {
             {categories.map((category: any) => (
               !category.parent && (
               <li key={category._id}>
-                <Link to={`/${category.name}`}>{category.name}</Link>
+                <Link to={`/products/${category.name}`}>{category.name}</Link>
               </li>)
             ))}
           </ul>

@@ -14,7 +14,7 @@ const HomePage: React.FC = () => {
 
   const getProducts = async () => {
     const response = await get(
-      `/product/getByCategory/זרי אירוסין`
+      `/product/getByCategory/זרי כלה`
     );
     if (response.error) {
       setSection1Product([]);
@@ -24,13 +24,13 @@ const HomePage: React.FC = () => {
       setSection1Product([]);
     }
     const response2 = await get(
-      `/product/getByCategory/זרי כלה`
+      `/product/getByCategory/זרי אירוסין`
     );
     if (response2.error) {
       setSection2Product([]);
     } else if (response2.data?.length > 0) {
+      console.log("response2", response2.data);
       setSection2Product(response2.data);
-      setSection2Product(response.data);
     } else {
       setSection2Product([]);
     }
@@ -58,13 +58,13 @@ const HomePage: React.FC = () => {
       <BouquetSection
         title="זרי הכלה הפופולריים שלנו"
         bouquets={section1Product}
-        route="/זרי כלה"
+        route="/products/זרי כלה"
       />
 
       <BouquetSection
         title="זרי אירוסין שאולי תאהבו"
         bouquets={section2Product}
-        route="/זרי אירוסין"
+        route="/products/זרי אירוסין"
       />
 
       <div id="about">

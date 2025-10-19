@@ -47,7 +47,7 @@ const SubCategoryPage = () => {
 
   useEffect(() => {
     getProducts();
-  }, [subCategory, reload]);
+  }, [subCategory, category, reload]);
 
   return (
     <div className="subcategory-page">

@@ -120,7 +120,7 @@ const NavBar = () => {
               >
                 <div className="category-header">
                   <Link
-                    to={isAdmin ? `/admin/${category.name}` : `/${category.name}`}
+                    to={isAdmin ? `/admin/${category.name}` : `/products/${category.name}`}
                     className="navbar-link"
                     onClick={closeMenu}
                   >
@@ -160,7 +160,7 @@ const NavBar = () => {
                             to={
                               isAdmin
                                 ? `/admin/products/${category.name}/${subCategory.name}`
-                                : `/${category.name}/${subCategory.name}`
+                                : `/products/${category.name}/${subCategory.name}`
                             }
                             className="dropdown-link"
                             onClick={closeMenu}
