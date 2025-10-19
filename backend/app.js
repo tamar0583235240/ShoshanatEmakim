@@ -8,7 +8,8 @@ const cookieParser = require("cookie-parser");
 
 const productRoutes = require('./src/routes/productRoute.js');
 const contactRoutes = require('./src/routes/contact.js');
-const authRoutes = require('./src/routes/adminAuth.js')
+const authRoutes = require('./src/routes/adminAuth.js');
+const categoryRoutes = require('./src/routes/categoryRoute.js');
 
 
 const PORT = process.env.PORT || 5001;
@@ -43,3 +44,4 @@ mongoose.connection.on('error', err => {
 app.use('/product', productRoutes);
 app.use('/contact', contactRoutes);
 app.use('/admin', authRoutes);
+app.use('/categories', categoryRoutes);

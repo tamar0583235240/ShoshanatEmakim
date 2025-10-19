@@ -54,3 +54,84 @@ request
     name, message, email ,phone
   }
 }
+
+# create new category
+Path:
+POST
+- categories/
+request
+{
+  body: {
+    name: String,
+    parent: ObjectId | null
+  }
+}
+Response 201:
+{
+  "message": "קטגוריה נוספה בהצלחה",
+  "data": { "_id": "...", "name": "...", "parent": null }
+}
+
+# get all categories
+Path:
+GET
+- categories/
+Response 200:
+{
+  "data": [
+    { "_id": "...", "name": "זרי אירוסין", "parent": null },
+    { "_id": "...", "name": "זרי אירוסין חיים", "parent": "..." }
+  ]
+}
+
+# get main categories (parent = null)
+Path:
+GET
+- categories/main
+Response 200:
+{
+  "data": [
+    { "_id": "...", "name": "זרי כלה" },
+    { "_id": "...", "name": "עיצוב אירועים" }
+  ]
+}
+
+# get sub categories by parentId
+Path:
+GET
+- categories/sub/:parentId
+Response 200:
+{
+  "data": [
+    { "_id": "...", "name": "זרי כלה ליד", "parent": "..." },
+    { "_id": "...", "name": "זרי כלה חישוק", "parent": "..." }
+  ]
+}
+
+# update category
+Path:
+PUT
+- categories/:id
+request
+{
+  body: { name, parent }
+}
+Response 200:
+{
+  "message": "קטגוריה עודכנה בהצלחה",
+  "data": { "_id": "...", "name": "שם חדש" }
+}
+
+# delete category
+Path:
+DELETE
+- categories/:id
+Response 200:
+{
+  "message": "קטגוריה נמחקה בהצלחה"
+}
+Response 400:
+{
+  "message": "לא ניתן למחוק קטגוריה זו, קיימים מוצרים המשויכים אליה.",
+  "count": 4
+}
