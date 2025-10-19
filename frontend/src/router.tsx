@@ -2,7 +2,6 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 import AppLayout from "./layouts/AppLayout";
 import HomePage from "./pages/HomePage";
 import NotFound from "./pages/NotFound";
-import CategoryPage from "./pages/CategoryPage";
 import SubCategoryPage from "./pages/SubCategoryPage";
 import AdminLogin from "./pages/admin/AdminLogin";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -16,7 +15,7 @@ const router = createBrowserRouter([
       {
         path: ":category",
         children: [
-          { index: true, element: <CategoryPage /> },
+          { index: true, element: <SubCategoryPage /> },
           { path: ":subCategory", element: <SubCategoryPage /> },
         ],
       },

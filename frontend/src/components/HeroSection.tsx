@@ -14,7 +14,7 @@ const HeroSection: React.FC = () => {
         <div>
           <h1 className="overlay-title">שושנת העמקים</h1>
           <h2 className="overlay-subtitle">יודעים לשזור את ההבדל</h2>
-          <a href="#flowers" className="cta-button">
+          <a href="/products/" className="cta-button">
             &lt;&lt; לכל הזרים שלנו
           </a>
         </div>
