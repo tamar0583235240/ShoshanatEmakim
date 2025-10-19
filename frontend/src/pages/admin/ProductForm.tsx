@@ -1,11 +1,11 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "../../style/AddProduct.css";
-import { ENUM_SUB_CATEGORIES } from "../../types/Enums"
-import { post } from "../../service/apiService";
+import { get, post } from "../../service/apiService";
 import ImageUploader from "../../components/ImageUploader";
 
 export default function ProductForm({ setIsModalOpen }: any) {
     const [message, setMessage] = useState<string | null>(null);
+    const [categories, setCategories] = useState<any[]>();
     const [formData, setFormData] = useState<any>({
         category: "",
         name: "",
@@ -13,6 +13,20 @@ export default function ProductForm({ setIsModalOpen }: any) {
         image: null,
     });
     const uploaderRef = useRef<any>(null);
+    useEffect(() => {
+        const fetchCategories = async () => {
+            try {
+                const response = await get("/categories/");
+                if (response.data) {
+                    setCategories(response.data);
+                }
+            } catch (error) {
+                setMessage("שגיאה בטעינת קטגוריות");
+            }
+        };
+
+        fetchCategories();
+    }, []);
 
     const handleChange = (e: any) => {
         const { name, value, files } = e.target;
@@ -66,11 +80,15 @@ export default function ProductForm({ setIsModalOpen }: any) {
                 required
             >
                 <option value="">בחרי קטגוריה</option>
-                {ENUM_SUB_CATEGORIES.map((subCat) => (
-                    <option key={subCat} value={subCat}>
-                        {subCat}
-                    </option>
-                ))}
+                {categories?.map((subCat) => {
+                    if (subCat.parent !== null) {
+                        return (
+                            <option key={subCat._id} value={subCat._id}>
+                                {subCat.name}
+                            </option>
+                        );
+                    }
+                })}
             </select>
 
             <label>שם מוצר</label>

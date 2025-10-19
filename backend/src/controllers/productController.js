@@ -6,7 +6,7 @@ const createProduct = async (req, res) => {
   const {  category, name, description } = req.body;
   try {
     // מציאת הקטגוריה לפי שם
-    const categoryData = await Category.findOne({ name: category });
+    const categoryData = await Category.findById(category);
     if (!categoryData) {
       return res.status(404).json({ message: `קטגוריה בשם ${category} לא נמצאה` });
     }

@@ -66,7 +66,6 @@ type BouquetProps = {
   name: string;
   image: string;
   category?: string;
-  description?: string;
   onClick?: () => void;
   onDelete?: () => void;
 };
@@ -76,7 +75,6 @@ const BouquetCard: React.FC<BouquetProps> = ({
   name,
   image,
   category,
-  description,
   onClick,
   onDelete,
 }) => {
