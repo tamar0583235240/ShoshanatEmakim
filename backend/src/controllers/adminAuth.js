@@ -14,7 +14,7 @@ const login = (req, res) => {
   try {
     // יצירת טוקן
     const token = jwt.sign({ role: "admin", username }, process.env.JWT_SECRET, {
-      expiresIn: "1h",
+      expiresIn: "1d",
     });
     console.log(`token: ${token}`);
     // שמירת הטוקן בעוגייה
