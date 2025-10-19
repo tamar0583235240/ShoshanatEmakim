@@ -120,7 +120,7 @@ const NavBar = () => {
               >
                 <div className="category-header">
                   <Link
-                    to={isAdmin ? `/admin/${category.name}` : `/products/${category.name}`}
+                    to={isAdmin ? `/admin/products/${category.name}` : `/products/${category.name}`}
                     className="navbar-link"
                     onClick={closeMenu}
                   >
